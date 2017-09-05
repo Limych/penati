@@ -5,6 +5,9 @@ vendor/
 # Configuration files with possibly sensitive information
 /.coveralls.yml
 /app/configs/*.php
+.vagrant/
+.ssh/
+/Homestead.yaml
 
 # Files and folders related to build/test tools
 .maintenance
