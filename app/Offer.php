@@ -5,10 +5,10 @@ namespace Penati;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Object extends Model 
+class Offer extends Model
 {
 
-    protected $table = 'objects';
+    protected $table = 'offers';
     public $timestamps = true;
 
     use SoftDeletes;
@@ -36,7 +36,7 @@ class Object extends Model
 
     public function assets()
     {
-        return $this->hasMany(ObjectAsset::class);
+        return $this->hasMany(OfferAsset::class);
     }
 
 }

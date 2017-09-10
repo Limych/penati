@@ -13,7 +13,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Penati\Agent;
-use Penati\Object;
+use Penati\Offer;
 use Illuminate\Console\Command;
 use Penati\Office;
 
@@ -175,11 +175,11 @@ class YandexXMLImport extends Command
             $objectData['badgeFPath'] = $data['images'][0];
         }
 
-        Object::unguard();
-        $object = Object::firstOrCreate([
+        Offer::unguard();
+        $object = Offer::firstOrCreate([
             'id' => $id,
         ], $objectData);
-        Object::unguard(false);
+        Offer::unguard(false);
 
         if (! empty($object->updated_at) && $data['last-update-date']->gt($object->updated_at)) {
             unset($objectData['slug'], $objectData['title'], $objectData['badgeFPath']);

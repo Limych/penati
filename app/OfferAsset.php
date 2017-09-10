@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Penati\Scopes\SortScope;
 
-class ObjectAsset extends Model 
+class OfferAsset extends Model
 {
 
-    protected $table = 'object_assets';
+    protected $table = 'offer_assets';
     public $timestamps = true;
 
     use SoftDeletes;
@@ -41,8 +41,8 @@ class ObjectAsset extends Model
         static::addGlobalScope(new SortScope());
     }
 
-    public function object()
+    public function offer()
     {
-        return $this->belongsTo(Object::class);
+        return $this->belongsTo(Offer::class);
     }
 }

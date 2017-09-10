@@ -18,13 +18,13 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('objects', function(Blueprint $table) {
+		Schema::table('offers', function(Blueprint $table) {
 			$table->foreign('agent_id')->references('id')->on('agents')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('object_assets', function(Blueprint $table) {
-			$table->foreign('object_id')->references('id')->on('agents')
+		Schema::table('offer_assets', function(Blueprint $table) {
+			$table->foreign('offer_id')->references('id')->on('offers')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
@@ -38,11 +38,11 @@ class CreateForeignKeys extends Migration {
 		Schema::table('agents', function(Blueprint $table) {
 			$table->dropForeign('agents_user_id_foreign');
 		});
-		Schema::table('objects', function(Blueprint $table) {
-			$table->dropForeign('objects_agent_id_foreign');
+		Schema::table('offers', function(Blueprint $table) {
+			$table->dropForeign('offers_agent_id_foreign');
 		});
-		Schema::table('object_assets', function(Blueprint $table) {
-			$table->dropForeign('object_assets_object_id_foreign');
+		Schema::table('offer_assets', function(Blueprint $table) {
+			$table->dropForeign('offer_assets_offer_id_foreign');
 		});
 	}
 }

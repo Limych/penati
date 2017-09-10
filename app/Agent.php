@@ -39,7 +39,7 @@ class Agent extends Model
 
     public function objects()
     {
-        return $this->hasMany(Object::class);
+        return $this->hasMany(Offer::class);
     }
 
 }

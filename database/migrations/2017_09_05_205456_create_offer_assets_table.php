@@ -3,13 +3,13 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateObjectAssetsTable extends Migration {
+class CreateOfferAssetsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('object_assets', function(Blueprint $table) {
+		Schema::create('offer_assets', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('object_id')->unsigned();
+			$table->integer('offer_id')->unsigned();
             $table->string('slug');
 			$table->integer('sortKey')->unsigned();
 			$table->string('title');
@@ -18,12 +18,12 @@ class CreateObjectAssetsTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->unique([ 'object_id', 'slug' ]);
+			$table->unique([ 'offer_id', 'slug' ]);
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('object_assets');
+		Schema::drop('offer_assets');
 	}
 }
