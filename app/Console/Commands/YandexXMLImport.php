@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Penati\Agent;
 use Penati\Offer;
 use Illuminate\Console\Command;
+use Penati\OfferAsset;
 use Penati\Office;
 
 class YandexXMLImport extends Command
@@ -176,23 +177,20 @@ class YandexXMLImport extends Command
         }
 
         Offer::unguard();
-        $object = Offer::firstOrCreate([
+        $offer = Offer::firstOrCreate([
             'id' => $id,
         ], $objectData);
         Offer::unguard(false);
 
-        if (! empty($object->updated_at) && $data['last-update-date']->gt($object->updated_at)) {
+        if (! empty($offer->updated_at) && $data['last-update-date']->gt($offer->updated_at)) {
             unset($objectData['slug'], $objectData['title'], $objectData['badgeFPath']);
-            $object->update($objectData);
+            $offer->update($objectData);
         }
 
-        $dir = 'objects/' . $id;
-        foreach ($data['images'] as $image_url) {
-            $fpath = $dir . '/' . basename($image_url);
-            if (! Storage::disk('public')->exists($fpath)) {
-                Storage::disk('public')->put($fpath, fopen($image_url, 'r'));
-            }
-        }
+
+//        $offer->assets()->save(OfferAsset::firstOrCreate([
+//            ''
+//        ]));
     }
 
     protected static function skipElement(\XMLReader $xml)

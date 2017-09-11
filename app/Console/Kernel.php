@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('import:yandex')
-                  ->hourly();
+//         $schedule->command('import:yandex')
+//                  ->daily();
     }
 
     /**

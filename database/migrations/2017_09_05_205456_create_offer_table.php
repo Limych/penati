@@ -17,6 +17,7 @@ class CreateOfferTable extends Migration {
 			$table->string('address');
 			$table->double('latitude')->index();
 			$table->double('longitude')->index();
+			$table->timestamp('expires_at')->index();
 			$table->timestamps();
 			$table->softDeletes();
 		});
