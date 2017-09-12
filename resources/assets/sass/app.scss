@@ -7,3 +7,34 @@
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+// Font-Awesome
+@import "~font-awesome/scss/font-awesome";
+
+
+
+#navbar-login {
+  border-bottom-left-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 0.2;
+}
+#navbar-login:hover,
+#navbar-login:active  {
+  opacity: 1;
+}
+
+#main-container    {
+  min-height: 100vh;
+  border-left: 1px solid #DDD;
+}
+#logo {
+  max-width: 80%;
+}
+#header {
+  background: url('/../images/intro-bg.jpg') no-repeat center;
+  background-size: cover;
+  min-height: 40vh;
+}

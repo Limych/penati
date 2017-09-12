@@ -1,4 +1,7 @@
 <?php
+/**
+ * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>
+ */
 
 use Illuminate\Database\Seeder;
 use Penati\Role;

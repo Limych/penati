@@ -1,5 +1,9 @@
 <?php
 /**
+ * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>
+ */
+
+/**
  * Created by PhpStorm.
  * User: Limych
  * Date: 06.09.2017
@@ -9,14 +13,13 @@
 namespace Penati\Console\Commands;
 
 use Carbon\Carbon;
+use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Penati\Agent;
 use Penati\Offer;
-use Illuminate\Console\Command;
-use Penati\OfferAsset;
 use Penati\Office;
+use Ramsey\Uuid\Uuid;
 
 class YandexXMLImport extends Command
 {
@@ -53,21 +56,21 @@ class YandexXMLImport extends Command
      */
     public function handle(Application $app)
     {
-        $feed = $this->argument('feed_url') ?: env('IMPORT_YANDEX');
-        if (empty($feed)) {
+        $feed_url = $this->argument('feed_url') ?: env('IMPORT_YANDEX');
+        if (empty($feed_url)) {
             $this->error('Empty feed URL.');
             return 1;
         }
 
         $reader = new \XMLReader();
-        $reader->open($feed);
+        $reader->open($feed_url);
         $reader->read();
         do {
             if ($reader->nodeType == \XMLReader::ELEMENT
                 && ($reader->localName == 'offer') && ($reader->namespaceURI == self::YANDEX_NS)
             ) {
                 try {
-                    $this->readOffer($reader);
+                    $this->readOffer($feed_url, $reader);
                 } catch (\Exception $ex) {
                     if ($app->environment() !== 'production') {
                         throw $ex;
@@ -80,9 +83,8 @@ class YandexXMLImport extends Command
         return 0;
     }
 
-    protected function readOffer(\XMLReader $xml)
+    protected function readOffer($feed_url, \XMLReader $xml)
     {
-        $id = null;
         $data = [];
 
         if ($xml->hasAttributes) {
@@ -90,6 +92,7 @@ class YandexXMLImport extends Command
             while ($moreAttributes) {
                 if ($xml->localName == 'internal-id') {
                     $id = intval($xml->value);
+                    $uuid = Uuid::uuid5(Uuid::NAMESPACE_URL, "$feed_url#$id");
                 }
                 $moreAttributes = $xml->moveToNextAttribute();
             }
@@ -160,7 +163,7 @@ class YandexXMLImport extends Command
             $xml->read(); // Advance the reader
         }
 
-        if (empty($data['location']['latitude'])) {
+        if (empty($uuid) || empty($data['location']['latitude'])) {
             return;
         }
 
@@ -170,23 +173,21 @@ class YandexXMLImport extends Command
             'latitude' => $data['location']['latitude'],
             'longitude' => $data['location']['longitude'],
             'address' => $data['location']['address'],
-            'agent_id' => $data['sales-agent']->id,
         ];
         if (! empty($data['images'])) {
             $objectData['badgeFPath'] = $data['images'][0];
         }
 
-        Offer::unguard();
-        $offer = Offer::firstOrCreate([
-            'id' => $id,
+        $offer = Offer::firstOrNew([
+            'uuid' => $uuid,
         ], $objectData);
-        Offer::unguard(false);
+        $offer->agent()->associate($data['sales-agent']);
 
         if (! empty($offer->updated_at) && $data['last-update-date']->gt($offer->updated_at)) {
             unset($objectData['slug'], $objectData['title'], $objectData['badgeFPath']);
             $offer->update($objectData);
         }
-
+        $offer->touch();
 
 //        $offer->assets()->save(OfferAsset::firstOrCreate([
 //            ''
@@ -274,12 +275,6 @@ class YandexXMLImport extends Command
                     'displayName' => $data['name'],
                     'contactUris' => implode("\n", $contacts),
                 ]);
-                $office = Office::firstOrCreate([
-                    'title' => $data['organization'],
-                ], [
-                    'contactUris' => '',
-                ]);
-                $agent->office()->associate($office);
                 $agent->save();
             }
         }

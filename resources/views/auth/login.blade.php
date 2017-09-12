@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <div>
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-sign-in"></i>Login
+                                        <i class="fa fa-btn fa-sign-in mr-2"></i>Login
                                     </button>
 
                                     <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your

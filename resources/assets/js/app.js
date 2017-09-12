@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./google-analytics');
 
 window.Vue = require('vue');
 

@@ -9,6 +9,7 @@ class CreateOfferTable extends Migration {
 	{
 		Schema::create('offers', function(Blueprint $table) {
 			$table->increments('id');
+			$table->uuid('uuid')->unique();
 			$table->string('slug')->unique();
 			$table->integer('agent_id')->unsigned();
 			$table->string('title');
@@ -17,9 +18,7 @@ class CreateOfferTable extends Migration {
 			$table->string('address');
 			$table->double('latitude')->index();
 			$table->double('longitude')->index();
-			$table->timestamp('expires_at')->index();
 			$table->timestamps();
-			$table->softDeletes();
 		});
 	}
 

@@ -3,3 +3,10 @@
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+*.xml   text diff=xml
+
+# Shell scripts require LF
+*.sh    text eol=lf
+
+# Batch scripts require CRLF
+*.bat   text eol=crlf

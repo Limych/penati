@@ -178,6 +178,7 @@ return [
         // Penati\Providers\BroadcastServiceProvider::class,
         Penati\Providers\EventServiceProvider::class,
         Penati\Providers\RouteServiceProvider::class,
+        \Penati\Providers\YandexMapProvider::class,
 
     ],
 

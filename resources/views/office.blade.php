@@ -1,60 +1,29 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}"><head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('content')
 
-    <title>Родные Пенаты</title>
+    <div class="container-fluid">
+        <div class="row">
 
-    <!-- Fonts -->
+            <!-- SideBar -->
+            <nav id="sidebar" class="col-md-2 py-4 text-center">
+                <img id="logo" alt="Родные Пенаты" src="{{ asset('images/penati-logo.png') }}" />
+            </nav>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+            <!-- Main Content -->
+            <div id="main-container" class="col-md-10 text-center px-0">
+                <div id="header" class="col parallax"></div>
+                <div id="main" class="col">
+                    <h1>Добро пожаловать</h1>
+                    <p>Pellentesque mollis non dolor id malesuada. Praesent eget felis quis urna vehicula ultrices et eget dui. Mauris porttitor hendrerit tellus. Integer sagittis ligula augue. Morbi bibendum dictum rutrum. Etiam laoreet dictum molestie. Fusce ultrices mauris eget ante bibendum, a semper ex imperdiet. Suspendisse augue mauris, vehicula at leo eget, pulvinar convallis elit. Suspendisse vitae lorem porttitor, aliquam urna eget, posuere augue. Vestibulum non neque sagittis, efficitur dui nec, convallis massa. Donec facilisis lacus at turpis varius, eu posuere mi maximus. Sed convallis elit vitae commodo molestie. Integer lobortis dui et nunc commodo, gravida cursus massa posuere. Morbi aliquam lacus augue, ut scelerisque libero posuere ac.</p>
+                    <p>Mauris eget consectetur libero, nec molestie nisl. Ut venenatis risus at eros sodales tincidunt. Donec ultricies vitae metus ut gravida. Sed nisl odio, placerat a vulputate eu, gravida in metus. Nulla at purus at justo sodales vestibulum ac eget sem. Maecenas erat nisi, sollicitudin faucibus bibendum non, iaculis semper sapien. Fusce ac nisl vel quam condimentum luctus in at mi. Maecenas non sem arcu.</p>
+                    <p>Sed consectetur sapien neque, ut ultrices metus volutpat sit amet. Ut sollicitudin odio vel neque iaculis, at porttitor lorem fermentum. Aenean congue ligula in elit sollicitudin sollicitudin. Mauris id arcu sapien. Pellentesque blandit posuere mi, in ultricies risus tempor ac. Maecenas a urna nisi. Cras eu pellentesque magna, a scelerisque sapien. Sed ut dui ut ligula rutrum vehicula ac ac quam. Nunc sed convallis orci, eu euismod enim. Aenean dictum, orci id scelerisque viverra, tellus lectus ornare leo, id sollicitudin nisi elit iaculis odio. Phasellus nisi nisl, tempor et risus eget, pulvinar laoreet justo.</p>
+                    <p>Nulla commodo quis dolor a viverra. Donec mattis metus eros, vel ultrices sapien facilisis et. Curabitur a nulla eu nunc tempus mattis vitae quis eros. Integer lorem odio, ullamcorper sed diam nec, convallis hendrerit lacus. Sed faucibus enim sed ante rutrum pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis nisl eu condimentum vestibulum. Morbi porttitor nec ipsum id egestas. Ut id quam tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse eget nulla ac libero efficitur bibendum. Duis laoreet rhoncus diam, in finibus justo rutrum ac. Quisque bibendum commodo tortor eu eleifend. Aenean in sem lacus. Duis dapibus nunc vitae nulla fermentum, vitae sodales mauris semper. Aenean vulputate fermentum velit in commodo.</p>
+                    <p>Aliquam erat volutpat. Maecenas blandit ante nec nibh tincidunt pretium. Vivamus lacinia, ipsum vitae iaculis elementum, sapien tellus faucibus nibh, sit amet sodales neque massa pellentesque neque. Nullam vel orci at urna lacinia bibendum eu in justo. In et nunc neque. Pellentesque posuere rhoncus nulla ut bibendum. Sed interdum ac diam vel consequat.</p>
+                </div>
+            </div>
 
-    <!-- Styles -->
-    <style>
-        #sidebar:after    {
-            content: "";
-            position: absolute;
-            top: -1.5em;
-            right: 0;
-            width: 1px;
-            height: 100vh;
-            background: #EEE;
-        }
-        .full-height {
-            min-height: 90vh;
-        }
-    </style>
-
-</head><body><div class="container-fluid my-4">
-    <div class="row full-height">
-
-        <!-- SideBar -->
-        <nav id="sidebar" class="col-md-2">
-            <img alt="Родные Пенаты" src="/images/Penati-Logo.png" style="max-width: 100%" />
-        </nav>
-
-        <!-- Main Content -->
-        <div id="main" class="col-md-10 align-self-center text-center">
-            <p>Извините, в&nbsp;данный момент сайт на&nbsp;реконструкции.</p>
-            <p>Но&nbsp;компания продолжает работать!</p>
-            <p>Звоните нам: <strong><a href="tel:+7-499-706-89-18">8&nbsp;499 706-89-18</a></strong> или&nbsp;приходите в&nbsp;гости: <strong><a target="_blank" href="https://www.google.ru/maps/place/%D0%90%D0%B3%D0%B5%D0%BD%D1%82%D1%81%D1%82%D0%B2%D0%BE+%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8+%22%D0%A0%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5+%D0%9F%D0%B5%D0%BD%D0%B0%D1%82%D1%8B%22/@55.7089915,37.662001,17.52z/data=!4m5!3m4!1s0x46b54ada3a010e17:0x3581cb6ec3684b65!8m2!3d55.7089598!4d37.6634764">ул.Автозаводская, д.5, стр.1, офис&nbsp;207</a></strong> (метро «Автозаводская», 300&nbsp;м пешком).</p>
-            <p>Мы всегда Вам рады.</p>
         </div>
-
     </div>
-</div>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-289367-18', 'auto');
-    ga('send', 'pageview');
-</script>
-</body></html>
+@endsection

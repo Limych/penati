@@ -2,11 +2,11 @@
 
 namespace Penati\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
+use Penati\Http\Controllers\Controller;
 use Penati\Role;
 use Penati\User;
-use Penati\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        $user->roles()->attach(Role::where('title', 'Client')->first());
+        $user->roles()->attach(Role::where('slug', str_slug('Client'))->first());
 
         return $user;
     }

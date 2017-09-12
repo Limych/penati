@@ -3,7 +3,7 @@
 namespace Penati;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Penati\Scopes\OfferExpireScope;
 
 class Offer extends Model
 {
@@ -11,20 +11,30 @@ class Offer extends Model
     protected $table = 'offers';
     public $timestamps = true;
 
-    use SoftDeletes;
+    protected $fillable = array('uuid', 'slug', 'title', 'badgeFPath', 'price', 'address', 'latitude', 'longitude');
 
-    protected $dates = ['deleted_at'];
-    protected $fillable = array('slug', 'title', 'badgeFPath', 'price', 'address', 'latitude', 'longitude');
-
-    public function __construct(array $attributes = [])
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
     {
-        parent::__construct($attributes);
+        parent::boot();
 
-        self::saving(function (self $model) {
-            if (empty($model->slug)) {
-                $model->slug = str_slug($model->id . ' ' . preg_replace_callback('/[\d.]+/', function ($matches) {
-                    return round(floatval($matches[0]), 0);
-                }, $model->title));
+        static::addGlobalScope(new OfferExpireScope());
+
+        static::creating(function ($model) {
+            $model->slug = str_slug(preg_replace('/^Россия,\s+/', '', $model->address));
+
+            $latestSlug =
+                static::whereRaw("slug = '$model->slug' OR slug LIKE '$model->slug-%'")
+                    ->latest('id')
+                    ->value('slug');
+            if ($latestSlug) {
+                $pieces = explode('-', $latestSlug);
+                $number = intval(end($pieces)) ?: 1;
+                $model->slug .= '-' . ($number + 1);
             }
         });
     }

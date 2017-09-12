@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+if (env('APP_DEBUG')) {
+    Route::get('/_dev/agent', 'DevController@agents');
+    Route::get('/_dev/offer', 'DevController@offers');
+    Route::get('/_dev/{model}', 'DevController@index');
+}
