@@ -8,6 +8,8 @@ use Penati\Scopes\OfferExpireScope;
 class Offer extends Model
 {
 
+    use HasSlug;
+
     protected $table = 'offers';
     public $timestamps = true;
 
@@ -24,24 +26,18 @@ class Offer extends Model
 
         static::addGlobalScope(new OfferExpireScope());
 
-        static::creating(function ($model) {
-            $model->slug = str_slug(preg_replace('/^Россия,\s+/', '', $model->address));
-
-            $latestSlug =
-                static::whereRaw("slug = '$model->slug' OR slug LIKE '$model->slug-%'")
-                    ->latest('id')
-                    ->value('slug');
-            if ($latestSlug) {
-                $pieces = explode('-', $latestSlug);
-                $number = intval(end($pieces)) ?: 1;
-                $model->slug .= '-' . ($number + 1);
+        static::creating(function (self $model) {
+            if (empty($model->slug)) {
+                $model->slug = $model->makeNewSlug(
+                    preg_replace('/^Россия,\s+/', '', $model->address)
+                );
             }
         });
     }
 
     public function agent()
     {
-        return $this->belongsTo(Agent::class);
+        return $this->belongsTo(User::class);
     }
 
     public function assets()

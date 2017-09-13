@@ -16,16 +16,18 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         Role::create([
-            'slug' => str_slug('admin'),
-            'title' => 'Administrator',
+            'name' => 'admin',
+            'display_name' => 'Administrator',
             'description' => 'An administrator user.',
         ]);
         Role::create([
-            'title' => 'Agent',
+            'name' => 'agent',
+            'display_name' => 'Agent',
             'description' => 'An agent user.',
         ]);
         Role::create([
-            'title' => 'Client',
+            'name' => 'client',
+            'display_name' => 'Client',
             'description' => 'A client user.',
         ]);
     }

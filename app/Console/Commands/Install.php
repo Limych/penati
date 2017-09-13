@@ -35,7 +35,7 @@ class Install extends Command
     public function handle()
     {
         // Check for application already installed
-        if(Role::where('title', 'Client')->first()) {
+        if(Role::where('name', 'client')->first()) {
             if (! $this->option('force')) {
                 throw new \RuntimeException('This application already installed.');
             }
@@ -62,7 +62,7 @@ class Install extends Command
             'email' => $admin_email,
             'password' => bcrypt($admin_password),
         ]);
-        $user->roles()->attach(Role::where('slug', str_slug('admin'))->first());
+        $user->roles()->attach(Role::where('name', 'admin')->first());
     }
 
     protected function askOption($name, $question, $validation)

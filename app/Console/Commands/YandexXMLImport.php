@@ -19,6 +19,8 @@ use Illuminate\Support\Str;
 use Penati\Agent;
 use Penati\Offer;
 use Penati\Office;
+use Penati\Role;
+use Penati\User;
 use Ramsey\Uuid\Uuid;
 
 class YandexXMLImport extends Command
@@ -256,7 +258,7 @@ class YandexXMLImport extends Command
     {
         $data = $this->readAssoc($xml);
 
-        $agent = Agent::where('fullName', $data['name'])->first();
+        $agent = User::where('name', $data['name'])->first();
         if (empty($agent)) {
             $contacts = [];
             $tmp = is_array($data['phone']) ? $data['phone'] : [ $data['phone'] ];
@@ -267,15 +269,16 @@ class YandexXMLImport extends Command
                 $contacts[] = 'mailto:' . $data['email'];
             }
 
-            $agent = Agent::where('contactUris', 'LIKE', "%$contacts[0]%")->first();
+            $agent = User::where('contactUris', 'LIKE', "%$contacts[0]%")->first();
 
             if (empty($agent)) {
-                $agent = new Agent([
-                    'fullName' => $data['name'],
-                    'displayName' => $data['name'],
+                $agent = User::create([
+                    'name' => $data['name'],
+                    'email' => Uuid::uuid4(),
+                    'password' => bcrypt(str_random(12)),
                     'contactUris' => implode("\n", $contacts),
                 ]);
-                $agent->save();
+                $agent->roles()->attach(Role::where('name', 'agent')->first());
             }
         }
 

@@ -10,13 +10,8 @@ class CreateForeignKeys extends Migration {
 
 	public function up()
 	{
-		Schema::table('agents', function(Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('users')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
 		Schema::table('offers', function(Blueprint $table) {
-			$table->foreign('agent_id')->references('id')->on('agents')
+			$table->foreign('agent_id')->references('id')->on('users')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -29,9 +24,6 @@ class CreateForeignKeys extends Migration {
 
 	public function down()
 	{
-		Schema::table('agents', function(Blueprint $table) {
-			$table->dropForeign('agents_user_id_foreign');
-		});
 		Schema::table('offers', function(Blueprint $table) {
 			$table->dropForeign('offers_agent_id_foreign');
 		});

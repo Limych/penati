@@ -12,8 +12,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $model->displayName }}</h4>
-                    @if($model->fullName != $model->displayName)
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $model->fullName }}</h6>
+                    @if($model->name != $model->displayName)
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $model->name }}</h6>
                     @endif
                     <p class="card-text">{{ $model->description }}</p>
                     <a href="{{ url('/agents/' . $model->slug) }}" class="card-link">Личная страница</a>

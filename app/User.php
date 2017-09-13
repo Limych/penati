@@ -2,12 +2,18 @@
 
 namespace Penati;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
+//    use SoftDeletes;
+    use HasSlug;
+    use EntrustUserTrait;
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'slug', 'name', 'email', 'password', 'displayName', 'photoFPath', 'slogan', 'description', 'contactUris',
     ];
 
     /**
@@ -27,42 +33,22 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles()
+    protected static function boot()
     {
-        return $this
-            ->belongsToMany(Role::class)
-            ->withTimestamps();
-    }
+        parent::boot();
 
-    public function authorizeRoles($roles)
-    {
-        if ($this->hasAnyRole($roles)) {
-            return true;
-        }
-        abort(401, 'This action is unauthorized.');
-    }
-
-    public function hasAnyRole($roles)
-    {
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                if ($this->hasRole($role)) {
-                    return true;
-                }
+        self::creating(function (self $model) {
+            if (empty($model->displayName)) {
+                $model->displayName = $model->name;
             }
-        } else {
-            if ($this->hasRole($roles)) {
-                return true;
+            if (empty($model->slug)) {
+                $model->slug = $model->makeNewSlug($model->displayName);
             }
-        }
-        return false;
+        });
     }
 
-    public function hasRole($role)
+    public function offers()
     {
-        if ($this->roles()->where('slug', str_slug($role))->first()) {
-            return true;
-        }
-        return false;
+        return $this->hasMany(Offer::class);
     }
 }

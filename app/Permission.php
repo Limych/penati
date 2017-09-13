@@ -7,14 +7,14 @@
  * Created by PhpStorm.
  * User: Limych
  * Date: 14.09.2017
- * Time: 1:43
+ * Time: 1:44
  */
 
 namespace Penati;
 
-use Zizaco\Entrust\EntrustRole;
+use Zizaco\Entrust\EntrustPermission;
 
-class Role extends EntrustRole
+class Permission extends EntrustPermission
 {
 
 }
