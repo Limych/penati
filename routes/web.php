@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('office');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -23,10 +19,14 @@ if (env('APP_DEBUG')) {
     Route::prefix('_dev')->group(function () {
         Route::get('agent', 'DevController@agents');
         Route::get('offer', 'DevController@offers');
+        //
         Route::get('{model}', 'DevController@index');
     });
 }
 
+Route::get('/', function () {
+    return view('index');
+});
 Route::resource('agents', 'AgentController', ['only' => [
     'show'
 ]]);

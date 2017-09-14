@@ -2,6 +2,7 @@
 
 namespace Penati\Http\Controllers;
 
+use Penati\ContentBlocks\MapContentBlock;
 use Penati\Offer;
 
 class OfferController extends Controller
@@ -53,7 +54,20 @@ class OfferController extends Controller
           abort(404);
       }
 
-      return view('offer', compact('offer', 'agent'));
+      $contentBlocks = $offer->contentBlocks()->get();
+      $hasMap = false;
+      foreach ($contentBlocks as $block) {
+          $hasMap |= ($block->type == 'map');
+      }
+      if (! $hasMap) {
+          $contentBlocks[] = new MapContentBlock([
+              'title' => 'Location on the map',
+              'summary' => $offer->latitude . ',' . $offer->longitude,
+              'content' => $offer->address,
+          ]);
+      }
+
+      return view('offer', compact('offer', 'agent', 'contentBlocks'));
   }
 
   /**

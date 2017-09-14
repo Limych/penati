@@ -14,4 +14,14 @@ namespace Penati\ContentBlocks;
 
 class PhotosContentBlock extends ContentBlock
 {
+
+    public function html()
+    {
+        $title = $this->title;
+        $summary = $this->summary;
+        $content = explode("\n", $this->content);
+
+        $view = view('block.photos', compact('title', 'summary', 'content'));
+        return $view->render();
+    }
 }

@@ -2,7 +2,9 @@
 
 namespace Penati\Providers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use Penati\Offer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,13 @@ class AppServiceProvider extends ServiceProvider
         \Blade::extend(function($value) {
             return preg_replace('/\@define(.+)/', '<?php ${1}; ?>', $value);
         });
+
+        /**
+         * Map application models to simple types
+         */
+        Relation::morphMap([
+            'offers' => Offer::class,
+        ]);
     }
 
     /**

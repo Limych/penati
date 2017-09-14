@@ -194,6 +194,7 @@ class YandexXMLImport extends Command
         if (! empty($data['description'])) {
             $offer->contentBlocks()->save(new DescriptionContentBlock([
                 'title' => Str::ucfirst($data['category']) . ' ' . $data['area'],
+                'summary' => $data['location']['address'],
                 'content' => $data['description'],
             ]));
         }

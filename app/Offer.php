@@ -2,6 +2,8 @@
 
 namespace Penati;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Penati\ContentBlocks\HasContentBlocks;
 use Penati\Scopes\OfferExpireScope;
@@ -26,7 +28,14 @@ class Offer extends Model
     {
         parent::boot();
 
-        static::addGlobalScope(new OfferExpireScope());
+        static::addGlobalScope('expire', function (Builder $builder) {
+            $model = $builder->getModel();
+            $builder->where(
+                $model->getUpdatedAtColumn(),
+                '>=',
+                Carbon::now()->subDays(3)->format('Y-m-d H:i:s')
+            );
+        });
 
         static::creating(function (self $model) {
             if (empty($model->slug)) {

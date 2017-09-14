@@ -12,16 +12,16 @@
 
 namespace Penati\ContentBlocks;
 
-class DescriptionContentBlock extends ContentBlock
+class MapContentBlock extends ContentBlock
 {
 
     public function html()
     {
         $title = $this->title;
-        $summary = $this->summary;
+        $coordinates = $this->summary;
         $content = $this->content;
 
-        $view = view('block.description', compact('title', 'summary', 'content'));
+        $view = view('block.map', compact('title', 'coordinates', 'content'));
         return $view->render();
     }
 }

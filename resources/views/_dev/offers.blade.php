@@ -20,7 +20,7 @@
                         <p>Агент: <a target="_blank" href="{{ url('/agents/' . $agent->slug) }}">
                                 {{ $agent->displayName }}</a></p>
                     </div>
-                    <a target="_blank" href="{{ url('/agents/' . $agent->slug . '/offers/' . $model->slug) }}" class="card-link">Личная страница</a>
+                    <a target="_blank" href="{{ url('/agents/' . $agent->slug . '/offers/' . $model->slug) }}" class="card-link">Личная страница объекта</a>
                 </div>
             </div>
             @endforeach

@@ -11,6 +11,15 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <style>
+        .block:nth-of-type(odd) {
+            background-color: rgba(0,0,0,.05);
+        }
+        .block-py {
+            padding-top: 7rem !important;
+            padding-bottom: 7rem !important;
+        }
+    </style>
 </head><body>
 <div id="app">
 
