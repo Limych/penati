@@ -17,10 +17,10 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ $model->address }}</h6>
                     <div class="card-text">
                         <p>{{ $model->description }}</p>
-                        <p>Агент: <a href="{{ url('/agents/' . $agent->slug) }}">
+                        <p>Агент: <a target="_blank" href="{{ url('/agents/' . $agent->slug) }}">
                                 {{ $agent->displayName }}</a></p>
                     </div>
-                    <a href="{{ url('/agents/' . $agent->slug . '/offers/' . $model->slug) }}" class="card-link">Личная страница</a>
+                    <a target="_blank" href="{{ url('/agents/' . $agent->slug . '/offers/' . $model->slug) }}" class="card-link">Личная страница</a>
                 </div>
             </div>
             @endforeach

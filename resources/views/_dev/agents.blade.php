@@ -16,8 +16,8 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ $model->name }}</h6>
                     @endif
                     <p class="card-text">{{ $model->description }}</p>
-                    <a href="{{ url('/agents/' . $model->slug) }}" class="card-link">Личная страница</a>
-                    <a href="{{ url('/agents/' . $model->slug . '/offers') }}" class="card-link">Объекты агента</a>
+                    <a target="_blank" href="{{ url('/agents/' . $model->slug) }}" class="card-link">Личная страница</a>
+                    <a target="_blank" href="{{ url('/agents/' . $model->slug . '/offers') }}" class="card-link">Объекты агента</a>
                 </div>
             </div>
             @endforeach

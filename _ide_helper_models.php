@@ -8,6 +8,101 @@
  */
 
 
+namespace Penati\ContentBlocks{
+/**
+ * Penati\ContentBlocks\ContentBlock
+ *
+ * @property int $id
+ * @property int $entity_id
+ * @property string $entity_type
+ * @property int $sort_key
+ * @property string $type
+ * @property string $title
+ * @property string|null $summary
+ * @property string $content
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\Penati\ContentBlocks\ContentBlock onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereEntityType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereSortKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereSummary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\ContentBlock whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Penati\ContentBlocks\ContentBlock withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Penati\ContentBlocks\ContentBlock withoutTrashed()
+ */
+	class ContentBlock extends \Eloquent {}
+}
+
+namespace Penati\ContentBlocks{
+/**
+ * Penati\ContentBlocks\DescriptionContentBlock
+ *
+ * @property int $id
+ * @property int $entity_id
+ * @property string $entity_type
+ * @property int $sort_key
+ * @property string $type
+ * @property string $title
+ * @property string|null $summary
+ * @property string $content
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereEntityType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereSortKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereSummary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\DescriptionContentBlock whereUpdatedAt($value)
+ */
+	class DescriptionContentBlock extends \Eloquent {}
+}
+
+namespace Penati\ContentBlocks{
+/**
+ * Penati\ContentBlocks\PhotosContentBlock
+ *
+ * @property int $id
+ * @property int $entity_id
+ * @property string $entity_type
+ * @property int $sort_key
+ * @property string $type
+ * @property string $title
+ * @property string|null $summary
+ * @property string $content
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereEntityType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereSortKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereSummary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\PhotosContentBlock whereUpdatedAt($value)
+ */
+	class PhotosContentBlock extends \Eloquent {}
+}
+
 namespace Penati{
 /**
  * Penati\Offer
@@ -25,7 +120,7 @@ namespace Penati{
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Penati\User $agent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\OfferAsset[] $assets
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\ContentBlocks\ContentBlock[] $contentBlocks
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereAgentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereBadgeFPath($value)
@@ -40,40 +135,6 @@ namespace Penati{
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereUuid($value)
  */
 	class Offer extends \Eloquent {}
-}
-
-namespace Penati{
-/**
- * Penati\OfferAsset
- *
- * @property int $id
- * @property int $offer_id
- * @property string $slug
- * @property int $sortKey
- * @property string $title
- * @property string $description
- * @property string $content
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property \Carbon\Carbon|null $deleted_at
- * @property-read \Penati\Offer $offer
- * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\Penati\OfferAsset onlyTrashed()
- * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereOfferId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereSortKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\OfferAsset whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Penati\OfferAsset withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\Penati\OfferAsset withoutTrashed()
- */
-	class OfferAsset extends \Eloquent {}
 }
 
 namespace Penati{

@@ -3,12 +3,14 @@
 namespace Penati;
 
 use Illuminate\Database\Eloquent\Model;
+use Penati\ContentBlocks\HasContentBlocks;
 use Penati\Scopes\OfferExpireScope;
 
 class Offer extends Model
 {
 
     use HasSlug;
+    use HasContentBlocks;
 
     protected $table = 'offers';
     public $timestamps = true;
@@ -39,10 +41,4 @@ class Offer extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function assets()
-    {
-        return $this->hasMany(OfferAsset::class);
-    }
-
 }

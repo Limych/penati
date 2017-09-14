@@ -20,7 +20,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 if (env('APP_DEBUG')) {
-    Route::get('/_dev/agent', 'DevController@agents');
-    Route::get('/_dev/offer', 'DevController@offers');
-    Route::get('/_dev/{model}', 'DevController@index');
+    Route::prefix('_dev')->group(function () {
+        Route::get('agent', 'DevController@agents');
+        Route::get('offer', 'DevController@offers');
+        Route::get('{model}', 'DevController@index');
+    });
 }
+
+Route::resource('agents', 'AgentController', ['only' => [
+    'show'
+]]);
+Route::resource('agents/{agent}/offers', 'OfferController', ['only' => [
+    'show'
+]]);

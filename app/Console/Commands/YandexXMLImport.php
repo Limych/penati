@@ -16,10 +16,9 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
-use Penati\Agent;
+use Penati\ContentBlocks\DescriptionContentBlock;
+use Penati\ContentBlocks\PhotosContentBlock;
 use Penati\Offer;
-use Penati\Office;
-use Penati\Role;
 use Penati\User;
 use Ramsey\Uuid\Uuid;
 
@@ -180,6 +179,7 @@ class YandexXMLImport extends Command
             $objectData['badgeFPath'] = $data['images'][0];
         }
 
+        /** @var Offer $offer */
         $offer = Offer::firstOrNew([
             'uuid' => $uuid,
         ], $objectData);
@@ -191,9 +191,18 @@ class YandexXMLImport extends Command
         }
         $offer->touch();
 
-//        $offer->assets()->save(OfferAsset::firstOrCreate([
-//            ''
-//        ]));
+        if (! empty($data['description'])) {
+            $offer->contentBlocks()->save(new DescriptionContentBlock([
+                'title' => Str::ucfirst($data['category']) . ' ' . $data['area'],
+                'content' => $data['description'],
+            ]));
+        }
+        if (! empty($data['images'])) {
+            $offer->contentBlocks()->save(new PhotosContentBlock([
+                'title' => 'Offer photo gallery',
+                'content' => implode("\n", $data['images']),
+            ]));
+        }
     }
 
     protected static function skipElement(\XMLReader $xml)

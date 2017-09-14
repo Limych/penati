@@ -19,6 +19,10 @@ class CreateOfferTable extends Migration {
 			$table->double('latitude')->index();
 			$table->double('longitude')->index();
 			$table->timestamps();
+
+            $table->foreign('agent_id')->references('id')->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
 		});
 	}
 

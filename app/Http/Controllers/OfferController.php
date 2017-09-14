@@ -2,7 +2,9 @@
 
 namespace Penati\Http\Controllers;
 
-class ObjectController extends Controller 
+use Penati\Offer;
+
+class OfferController extends Controller
 {
 
   /**
@@ -35,15 +37,23 @@ class ObjectController extends Controller
     
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $agent
+     * @param  string  $offer
+     * @return Response
+     */
+  public function show($agent, $offer)
   {
-    
+      $offer = Offer::whereSlug($offer)->first();
+      $tmp = $agent;
+      $agent = $offer->agent()->first();
+      if ($agent->slug !== $tmp) {
+          abort(404);
+      }
+
+      return view('offer', compact('offer', 'agent'));
   }
 
   /**
