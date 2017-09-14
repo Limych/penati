@@ -78,49 +78,6 @@ namespace Penati{
 
 namespace Penati{
 /**
- * Penati\Permission
- *
- * @property int $id
- * @property string $name
- * @property string|null $display_name
- * @property string|null $description
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\Role[] $roles
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Permission whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Permission whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Permission whereDisplayName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Permission whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Permission whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Permission whereUpdatedAt($value)
- */
-	class Permission extends \Eloquent {}
-}
-
-namespace Penati{
-/**
- * Penati\Role
- *
- * @property int $id
- * @property string $name
- * @property string|null $display_name
- * @property string|null $description
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\Permission[] $perms
- * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\User[] $users
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Role whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Role whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Role whereDisplayName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Role whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Role whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Role whereUpdatedAt($value)
- */
-	class Role extends \Eloquent {}
-}
-
-namespace Penati{
-/**
  * Penati\User
  *
  * @property int $id
@@ -137,9 +94,13 @@ namespace Penati{
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property \Carbon\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\Offer[] $offers
- * @property-read \Illuminate\Database\Eloquent\Collection|\Penati\Role[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\Penati\User onlyTrashed()
+ * @method static bool|null restore()
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereContactUris($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereDeletedAt($value)
@@ -147,6 +108,9 @@ namespace Penati{
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereDisplayName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereIs($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereIsAll($role)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereIsNot($role)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User wherePhotoFPath($value)
@@ -154,6 +118,8 @@ namespace Penati{
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereSlogan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Penati\User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Penati\User withoutTrashed()
  */
 	class User extends \Eloquent {}
 }

@@ -278,7 +278,7 @@ class YandexXMLImport extends Command
                     'password' => bcrypt(str_random(12)),
                     'contactUris' => implode("\n", $contacts),
                 ]);
-                $agent->roles()->attach(Role::where('name', 'agent')->first());
+                \Bouncer::assign('agent')->to($agent);
             }
         }
 

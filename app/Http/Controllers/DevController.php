@@ -6,9 +6,8 @@
 namespace Penati\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
-use Penati\Agent;
 use Penati\Offer;
-use Penati\Role;
+use Penati\User;
 
 class DevController extends Controller
 {
@@ -43,7 +42,7 @@ class DevController extends Controller
      */
     public function agents()
     {
-        $models = Role::whereName('agent')->first()->users;
+        $models = User::whereIs('agent')->get();
         return view('_dev.agents', compact('models'));
     }
 
