@@ -6,6 +6,7 @@
 namespace Penati\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Penati\Role;
 use Penati\User;
@@ -35,7 +36,7 @@ class Install extends Command
     public function handle()
     {
         // Check for application already installed
-        if (User::first()) {
+        if (in_array('users', DB::getDoctrineSchemaManager()->listTableNames())) {
             if (! $this->option('force')) {
                 throw new \RuntimeException('This application already installed.');
             }
