@@ -3,6 +3,7 @@
 namespace Penati\Http\Controllers;
 
 use Penati\ContentBlocks\MapContentBlock;
+use Penati\ContentBlocks\PriceContentBlock;
 use Penati\Offer;
 
 class OfferController extends Controller
@@ -55,13 +56,20 @@ class OfferController extends Controller
       }
 
       $contentBlocks = $offer->contentBlocks()->get();
-      $hasMap = false;
+      $hasMap = $hasPrice = false;
       foreach ($contentBlocks as $block) {
+          $hasPrice |= ($block->type == 'price');
           $hasMap |= ($block->type == 'map');
+      }
+      if (! $hasPrice) {
+          $contentBlocks[] = new PriceContentBlock([
+              'title' => 'Цена предложения',
+              'summary' => $offer->price,
+          ]);
       }
       if (! $hasMap) {
           $contentBlocks[] = new MapContentBlock([
-              'title' => 'Location on the map',
+              'title' => 'Объект на карте',
               'summary' => $offer->latitude . ',' . $offer->longitude,
               'content' => $offer->address,
           ]);

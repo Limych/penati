@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}"><head>
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') - Родные Пенаты, Агентство недвижимости</title>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <style>
-        .block:nth-of-type(odd) {
-            background-color: rgba(0,0,0,.05);
-        }
-        .block-py {
-            padding-top: 7rem !important;
-            padding-bottom: 7rem !important;
-        }
-    </style>
 </head><body>
 <div id="app">
 

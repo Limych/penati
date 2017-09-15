@@ -12,7 +12,7 @@
 @import "~font-awesome/scss/font-awesome";
 
 
-
+// Navbar
 #navbar-login {
   border-bottom-left-radius: 0.5rem;
   position: absolute;
@@ -26,22 +26,32 @@
   opacity: 1;
 }
 
-#sidebar-sticker {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 1px;
-  min-height: 99vh;
+// Sidebar
+@include media-breakpoint-up(md) {
+  #sidebar-sticker {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1px;
+    min-height: 97vh;
+  }
+  #sidebar-contacts {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 }
 
+// Main content
 #main-container    {
   min-height: 100vh;
   border-left: 1px solid #DDD;
-}
-#logo {
-  max-width: 80%;
 }
 #header {
   background: url('/../images/intro-bg.jpg') no-repeat center;
   background-size: cover;
   min-height: 40vh;
+}
+
+.block:nth-of-type(odd) {
+  background-color: rgba(0,0,0,.05);
 }

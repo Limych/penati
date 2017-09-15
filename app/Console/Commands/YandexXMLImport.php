@@ -200,7 +200,7 @@ class YandexXMLImport extends Command
         }
         if (! empty($data['images'])) {
             $offer->contentBlocks()->save(new PhotosContentBlock([
-                'title' => 'Offer photo gallery',
+                'title' => 'Фотогалерея объекта',
                 'content' => implode("\n", $data['images']),
             ]));
         }

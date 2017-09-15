@@ -8,16 +8,18 @@
             <!-- SideBar -->
             <nav id="sidebar" class="col-md-2 text-center"><div id="sidebar-sticker" class="py-3">
                 @section('sidebar')
-                <img id="logo" alt="Родные Пенаты" src="{{ asset('images/penati-logo.png') }}" />
-                <div class="" style="border: 1px dashed red">
-                    test
-                </div>
+                    <div id="logo">
+                        <img class="img-fluid" style="max-height: 4rem" alt="Родные Пенаты" src="{{ asset('images/penati-logo.png') }}" />
+                    </div>
                 @show
+                <div id="sidebar-contacts">
+                    @yield('sidebar-contacts')
+                </div>
             </div></nav>
 
             <!-- Main Content -->
             <div id="main-container" class="col-md-10 text-center px-0">
-                <div id="header" class="col parallax"></div>
+                {{--<div id="header" class="col parallax"></div>--}}
                 <div id="main" class="col">
                     @yield('site-content')
                 </div>
