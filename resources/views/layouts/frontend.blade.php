@@ -6,13 +6,14 @@
         <div class="row">
 
             <!-- SideBar -->
-            <nav id="sidebar" class="col-md-2 py-4 text-center">
-                <div class="position-sticky" style="top: 1rem">
-                    @section('sidebar')
-                    <img id="logo" alt="Родные Пенаты" src="{{ asset('images/penati-logo.png') }}" />
-                    @show
+            <nav id="sidebar" class="col-md-2 text-center"><div id="sidebar-sticker" class="py-3">
+                @section('sidebar')
+                <img id="logo" alt="Родные Пенаты" src="{{ asset('images/penati-logo.png') }}" />
+                <div class="" style="border: 1px dashed red">
+                    test
                 </div>
-            </nav>
+                @show
+            </div></nav>
 
             <!-- Main Content -->
             <div id="main-container" class="col-md-10 text-center px-0">

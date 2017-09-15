@@ -12255,6 +12255,13 @@ a.text-dark:hover {
   opacity: 1;
 }
 
+#sidebar-sticker {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1px;
+  min-height: 99vh;
+}
+
 #main-container {
   min-height: 100vh;
   border-left: 1px solid #DDD;
