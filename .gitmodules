@@ -1,0 +1,3 @@
+[submodule "packages/laravel-dashboardmaster"]
+	path = packages/laravel-dashboardmaster
+	url = https://github.com/Limych/laravel-dashboardmaster.git
