@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-vendor/bin/dep deploy
+vendor/bin/dep -vvv deploy
