@@ -10,7 +10,7 @@ class CreateOfferTable extends Migration {
 		Schema::create('offers', function(Blueprint $table) {
 			$table->increments('id');
 			$table->uuid('uuid')->unique();
-			$table->string('slug')->unique();
+			$table->string('slug', 80)->unique();
 			$table->integer('agent_id')->unsigned();
 			$table->string('title');
 			$table->string('badgeFPath')->nullable()->default(null);

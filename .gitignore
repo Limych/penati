@@ -4,6 +4,10 @@ npm-debug.log
 yarn-error.log
 composer.phar
 
+# Project specific
+/production/
+/.ssh/
+
 # Laravel 5 & Lumen specific
 public/storage
 public/hot

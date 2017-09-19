@@ -13,36 +13,7 @@
 
 Auth::routes();
 
-Route::get('sitemap.xml', function(){
-    // create new sitemap object
-    $sitemap = App::make('sitemap');
-
-    // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
-    // by default cache is disabled
-    $sitemap->setCache('laravel.sitemap', 12 * 60, true);
-
-    // check if there is cached sitemap and build new only if is not
-    if (! $sitemap->isCached()) {
-        // add item to the sitemap (url, date, priority, freq)
-//        $sitemap->add(URL::to('/'), null, null, 'daily');
-
-        // add all offers to the sitemap
-        $offers = \Penati\Offer::orderBy('created_at', 'desc')->get();
-        foreach ($offers as $offer)
-        {
-            $agent = $offer->agent()->first();
-            $url = URL::route('offers.show', [
-                'agent' => $agent->slug,
-                'id' => $offer->slug,
-            ]);
-            $sitemap->add($url, $offer->updated_at);
-        }
-    }
-
-    return $sitemap->render();
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('sitemap.xml', 'SitemapController@index')->name('sitemap');
 
 if (env('APP_DEBUG')) {
     Route::prefix('_dev')->group(function () {
@@ -56,6 +27,7 @@ if (env('APP_DEBUG')) {
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('agents', 'AgentController', ['only' => [
     'show'
 ]]);

@@ -8,31 +8,42 @@ set('application', 'penati.ru');
 
 // Project repository
 set('repository', 'https://github.com/Limych/penati.git');
+set('branch', 'stable');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', true);
 
-// Shared files/dirs between deploys 
+// Activate SSH multiplexing
+set('ssh_multiplexing', true);
+
+// Shared files/dirs between deploys
 add('shared_files', []);
 add('shared_dirs', []);
 
-// Writable dirs by web server 
+// Writable dirs by web server
 add('writable_dirs', []);
 
+// Default stage
+set('default_stage', 'production');
 
 // Hosts
 
-host('reg-ru.penati.ru')
-    ->user('u0386811')
+host('penati-reg')
     ->configFile('~/.ssh/config')
-    ->identityFile('~/.ssh/id_rsa')
     ->stage('production')
-    ->set('deploy_path', '~/{{application}}');
+    ->set('deploy_path', '~/{{application}}')
+    ->set('bin/php', function () {
+        $php = run("cat ~/php-bin/php");
+        $php = preg_replace('/^\#\!/', '', $php);
+        $php = preg_replace('/-cgi$/', '', $php);
+        return $php;
+    })
+    ->set('writable_mode', 'chmod');
 
 // Tasks
 
 task('build', function () {
-    run('cd {{release_path}} && build');
+    run('cd {{release_path}} && ./make_prod.sh');
 });
 
 // [Optional] if deploy fails automatically unlock.
