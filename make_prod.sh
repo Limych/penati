@@ -4,7 +4,7 @@ set -e
 echo "Cleaning production directory..."
 rm -Rf production
 
-git clone -b master https://github.com/Limych/penati.git production
+git clone -b master git+ssh://git@github.com/Limych/penati.git production
 cd production/
 #composer install --no-scripts --no-interaction
 ln -sf ../vendor/
@@ -20,7 +20,7 @@ rm -Rf resources/assets tests .editorconfig .phpstorm.meta.php _* after.sh alias
 git checkout -B stable
 git add --all
 git commit --author="Production Bot <no@email.com>" --message="Production version"
-git push --force --set-upstream https://github.com/Limych/penati.git stable
+git push --force --set-upstream git+ssh://git@github.com/Limych/penati.git stable
 
 #cd ..
 #rm -Rf production
