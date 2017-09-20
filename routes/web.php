@@ -26,8 +26,8 @@ if (env('APP_DEBUG')) {
 
 Route::get('/', function () {
     return view('index');
-});
-Route::get('/home', 'HomeController@index')->name('home');
+})->name('home');
+Route::get('/home', 'HomeController@index');
 
 // Agents
 Route::resource('agents', 'AgentController', ['only' => [

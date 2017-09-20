@@ -39,7 +39,7 @@
         {!! $block->html() !!}
     @endforeach
 
-    <div class="d-block d-md-none block row justify-content-center py-5 py-md-6 px-3">
+    <div class="d-block d-md-none block row justify-content-center py-5 py-md-6 px-3 text-center">
         <p class="small">Я&nbsp;с&nbsp;радостью отвечу на&nbsp;Ваши вопросы по&nbsp;этому объекту</p>
         <div>
             <img src="/images/dummy-portrait.png" class="img-fluid my-2" style="max-height: 7rem" />
@@ -51,7 +51,7 @@
             @endif
         @endforeach
     </div>
-    <div class="block row justify-content-center py-5 py-md-6 px-3">
+    <div class="block row justify-content-center py-5 py-md-6 px-3 text-center">
         <p class="w-100">Пожалуйста, поделитесь этой страницей с друзьями. Возможно, это та недвижимость, которую ищет ваш друг.</p>
         <div class="w-100">
             <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8" async="async"></script>

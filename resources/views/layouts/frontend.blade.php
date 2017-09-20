@@ -18,9 +18,9 @@
             </div></nav>
 
             <!-- Main Content -->
-            <div id="main-container" class="col-md-10 text-center px-0">
+            <div id="main-container" class="col-md-10 px-0">
                 {{--<div id="header" class="col parallax"></div>--}}
-                <div id="main" class="col">
+                <div id="main" class="col container-fluid">
                     @yield('site-content')
                 </div>
             </div>
