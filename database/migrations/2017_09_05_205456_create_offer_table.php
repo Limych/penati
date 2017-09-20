@@ -9,7 +9,7 @@ class CreateOfferTable extends Migration {
 	{
 		Schema::create('offers', function(Blueprint $table) {
 			$table->increments('id');
-			$table->uuid('uuid')->unique();
+			$table->string('foreign_id')->unique();
 			$table->string('slug', 80)->unique();
 			$table->integer('agent_id')->unsigned();
 			$table->string('title');

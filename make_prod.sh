@@ -15,7 +15,7 @@ npm run production
 vendor/bin/phpunit
 
 rm -f vendor node_modules
-rm -Rf resources/assets tests .editorconfig .phpstorm.meta.php _* after.sh aliases *install.sh deploy.sh make_prod.sh package.json phpunit.xml server.php Vagrantfile webpack.mix.js
+rm -Rf resources/assets tests .editorconfig .env* .phpstorm.meta.php _* after.sh *install.sh deploy.* make_prod.sh package.json phpunit.xml server.php Vagrantfile webpack.mix.js
 
 git checkout -B stable
 git add --all

@@ -28,9 +28,19 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Agents
 Route::resource('agents', 'AgentController', ['only' => [
     'show'
 ]]);
+
+// Offers
+Route::get('offers/{id}', function ($id) {
+    // Redirect external short link to right URL
+    $offer = \Penati\Offer::whereForeignId($id)->first();
+    return redirect('agents/' . $offer->agent()->first([ 'slug' ])->slug .
+        '/offers/' . $offer->slug);
+});
 Route::resource('agents/{agent}/offers', 'OfferController', ['only' => [
     'show'
 ]]);

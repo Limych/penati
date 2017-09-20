@@ -15,9 +15,17 @@ namespace Penati;
 trait HasSlug
 {
 
-    protected function makeNewSlug($seed)
+    protected function makeNewSlug($seed, $trim_end = true)
     {
-        $slug = str_slug($seed);
+        $slug = explode('-', str_slug($seed));
+        while (strlen(implode('-', $slug)) > 76) {
+            if ($trim_end) {
+                array_pop($slug);
+            } else {
+                array_shift($slug);
+            }
+        }
+        $slug = implode('-', $slug);
         $latestSlug =
             static::whereRaw("slug = '$slug' OR slug LIKE '$slug-%'")
                 ->latest('id')

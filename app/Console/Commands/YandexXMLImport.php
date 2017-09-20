@@ -92,8 +92,7 @@ class YandexXMLImport extends Command
             $moreAttributes = $xml->moveToFirstAttribute();
             while ($moreAttributes) {
                 if ($xml->localName == 'internal-id') {
-                    $id = intval($xml->value);
-                    $uuid = Uuid::uuid5(Uuid::NAMESPACE_URL, "$feed_url#$id");
+                    $foreign_id = intval($xml->value) . '@' . parse_url($feed_url, PHP_URL_HOST);
                 }
                 $moreAttributes = $xml->moveToNextAttribute();
             }
@@ -164,7 +163,7 @@ class YandexXMLImport extends Command
             $xml->read(); // Advance the reader
         }
 
-        if (empty($uuid) || empty($data['location']['latitude'])) {
+        if (empty($foreign_id) || empty($data['location']['latitude'])) {
             return;
         }
 
@@ -181,7 +180,7 @@ class YandexXMLImport extends Command
 
         /** @var Offer $offer */
         $offer = Offer::firstOrNew([
-            'uuid' => $uuid,
+            'foreign_id' => $foreign_id,
         ], $objectData);
         $offer->agent()->associate($data['sales-agent']);
 

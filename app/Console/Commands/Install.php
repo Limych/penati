@@ -9,7 +9,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Penati\Role;
-use Penati\User;
 
 class Install extends Command
 {
@@ -52,18 +51,11 @@ class Install extends Command
             'required|email'
         );
 
-        $admin_password = $this->askOption(
-            'password',
-            'Specify the administrator password',
-            'required|min:6|regex:/(?=.*[a-zA-Z])(?=.*\d)/'
-        );
-
-        $admin = User::create([
-            'name' => 'Administrator',
+        $this->call('make:user', [
+            '--name' => 'Admin',
+            '--password' => $this->option('password'),
             'email' => $admin_email,
-            'password' => bcrypt($admin_password),
         ]);
-        \Bouncer::assign('admin')->to($admin);
     }
 
     protected function askOption($name, $question, $validation)

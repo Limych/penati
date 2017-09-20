@@ -46,6 +46,10 @@ class User extends Authenticatable
                 $model->slug = $model->makeNewSlug($model->displayName);
             }
         });
+
+        self::created(function (self $model) {
+            \Bouncer::assign(($model::count() == 1) ? 'admin' : 'client')->to($model);
+        });
     }
 
     public function offers()

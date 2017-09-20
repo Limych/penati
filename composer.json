@@ -13,13 +13,13 @@
         "laravel/framework": "~5.5",
         "laravel/homestead": "~6.1",
         "laravel/tinker": "~1.0",
+        "doctrine/dbal": "^2.6",
         "roumen/sitemap": "^2.7",
         "silber/bouncer": "v1.0.0-beta.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "~2.4",
         "deployer/deployer": "^6.0",
-        "doctrine/dbal": "^2.6",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~0.9",

@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-vendor/bin/dep -vvv deploy
+if [[ "$#" -eq "0" ]]
+then
+    vendor/bin/dep deploy
+else
+    vendor/bin/dep "$@"
+fi

@@ -168,7 +168,7 @@ namespace Penati{
  * Penati\Offer
  *
  * @property int $id
- * @property string $uuid
+ * @property string $foreign_id
  * @property string $slug
  * @property int $agent_id
  * @property string $title
@@ -185,6 +185,7 @@ namespace Penati{
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereAgentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereBadgeFPath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereForeignId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereLatitude($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereLongitude($value)
@@ -192,7 +193,6 @@ namespace Penati{
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Penati\Offer whereUuid($value)
  */
 	class Offer extends \Eloquent {}
 }

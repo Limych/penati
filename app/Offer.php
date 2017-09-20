@@ -17,7 +17,7 @@ class Offer extends Model
     protected $table = 'offers';
     public $timestamps = true;
 
-    protected $fillable = array('uuid', 'slug', 'title', 'badgeFPath', 'price', 'address', 'latitude', 'longitude');
+    protected $fillable = array('foreign_id', 'slug', 'title', 'badgeFPath', 'price', 'address', 'latitude', 'longitude');
 
     /**
      * The "booting" method of the model.
@@ -40,7 +40,8 @@ class Offer extends Model
         static::creating(function (self $model) {
             if (empty($model->slug)) {
                 $model->slug = $model->makeNewSlug(
-                    preg_replace('/^Россия,\s+/', '', $model->address)
+                    preg_replace('/^Россия,\s+/', '', $model->address),
+                    false
                 );
             }
         });

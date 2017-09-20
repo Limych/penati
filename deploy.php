@@ -46,6 +46,13 @@ host('penati-reg')
 //    run('cd {{release_path}} && build');
 //});
 
+// Add symlink to current PHP version
+desc('Add symlink to current PHP version');
+task('penati:php', function () {
+    run('cd {{release_path}} && ln -s {{bin/php}}');
+});
+after('deploy:shared', 'penati:php');
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 

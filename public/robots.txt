@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+Host: http://penati.ru/
+Sitemap: http://penati.ru/sitemap.xml

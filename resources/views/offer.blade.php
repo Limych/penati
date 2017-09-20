@@ -2,7 +2,7 @@
 
 @section('title')
 
-    {{ $offer->title }}
+    {{ $offer->title }} ({{ $offer->address }})
 
 @endsection
 
@@ -27,6 +27,7 @@
                 @break
             @endif
         @endforeach
+        <p>Ваш помощник: {{ $agent->displayName }}</p>
     </div>
 
 @endsection

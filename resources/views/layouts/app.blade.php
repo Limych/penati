@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>@yield('title') - Родные Пенаты, Агентство недвижимости</title>
+    @yield('og')
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
