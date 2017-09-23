@@ -19,10 +19,21 @@ if (env('APP_DEBUG')) {
     Route::prefix('_dev')->group(function () {
         Route::get('agent', 'DevController@agents');
         Route::get('offer', 'DevController@offers');
-        //
-        Route::get('{model}', 'DevController@index');
+
+        Route::get('test', function () {
+            return view('test');
+        })->name('test');
     });
 }
+
+Route::prefix('about')->group(function () {
+    Route::get('personal-data', function () {
+        return view('about.personal-data');
+    })->name('about_personal-data');
+    Route::get('cookies', function () {
+        return view('about.cookies');
+    })->name('about_cookies');
+});
 
 Route::get('/', function () {
     return view('index');
@@ -37,8 +48,8 @@ Route::resource('agents', 'AgentController', ['only' => [
 // Offers
 Route::get('offers/{id}', function ($id) {
     // Redirect external short link to right URL
-    $offer = \Penati\Offer::whereForeignId($id)->first();
-    return redirect('agents/' . $offer->agent()->first([ 'slug' ])->slug .
+    $offer = \Penati\Offer::whereForeignId($id)->firstOrFail();
+    return redirect('agents/' . $offer->agent()->firstOrFail([ 'slug' ])->slug .
         '/offers/' . $offer->slug);
 });
 Route::resource('agents/{agent}/offers', 'OfferController', ['only' => [

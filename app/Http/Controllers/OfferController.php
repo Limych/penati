@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 namespace Penati\Http\Controllers;
 
+use Penati\ContentBlocks\CoverContentBlock;
 use Penati\ContentBlocks\MapContentBlock;
 use Penati\ContentBlocks\PriceContentBlock;
 use Penati\Offer;
@@ -16,7 +17,7 @@ class OfferController extends Controller
    */
   public function index()
   {
-    
+
   }
 
   /**
@@ -26,7 +27,7 @@ class OfferController extends Controller
    */
   public function create()
   {
-    
+
   }
 
   /**
@@ -36,7 +37,7 @@ class OfferController extends Controller
    */
   public function store()
   {
-    
+
   }
 
     /**
@@ -56,18 +57,27 @@ class OfferController extends Controller
       }
 
       $contentBlocks = $offer->contentBlocks()->get();
-      $hasMap = $hasPrice = false;
+      $blockTypes = [];
       foreach ($contentBlocks as $block) {
-          $hasPrice |= ($block->type == 'price');
-          $hasMap |= ($block->type == 'map');
+          $blockTypes[$block->type] = true;
       }
-      if (! $hasPrice) {
+
+      if (! isset($blockTypes['cover'])) {
+          $contentBlocks->splice(0, 0, [
+              new CoverContentBlock([
+                  'title' => $offer->title,
+                  'summary' => $offer->badgeFPath,
+                  'sort_key' => 0,
+              ])
+          ]);
+      }
+      if (! isset($blockTypes['price'])) {
           $contentBlocks[] = new PriceContentBlock([
               'title' => 'Цена предложения',
               'summary' => $offer->price,
           ]);
       }
-      if (! $hasMap) {
+      if (! isset($blockTypes['map'])) {
           $contentBlocks[] = new MapContentBlock([
               'title' => 'Объект на карте',
               'summary' => $offer->latitude . ',' . $offer->longitude,
@@ -86,7 +96,7 @@ class OfferController extends Controller
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -97,7 +107,7 @@ class OfferController extends Controller
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -108,7 +118,7 @@ class OfferController extends Controller
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }

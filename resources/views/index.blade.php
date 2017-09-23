@@ -1,12 +1,42 @@
 @extends('layouts.frontend')
 
+@section('title')Добро пожаловать@endsection
+
 @section('site-content')
 
-    <div class="mt-5" style="min-height: 90vh">
-        <p>Извините, в&nbsp;данный момент сайт на&nbsp;реконструкции.</p>
-        <p>Но&nbsp;компания продолжает работать!</p>
-        <p>Звоните нам: <strong><a href="tel:+7-499-706-89-18">8&nbsp;499 706-89-18</a></strong> или&nbsp;приходите в&nbsp;гости: <strong><a target="_blank" href="https://www.google.ru/maps/place/%D0%90%D0%B3%D0%B5%D0%BD%D1%82%D1%81%D1%82%D0%B2%D0%BE+%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8+%22%D0%A0%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5+%D0%9F%D0%B5%D0%BD%D0%B0%D1%82%D1%8B%22/@55.7089915,37.662001,17.52z/data=!4m5!3m4!1s0x46b54ada3a010e17:0x3581cb6ec3684b65!8m2!3d55.7089598!4d37.6634764">ул.Автозаводская, д.5, стр.1, офис&nbsp;207</a></strong> (метро «Автозаводская», 300&nbsp;м пешком).</p>
-        <p>Мы всегда Вам рады.</p>
+    <div class="row block align-items-center" style="background: no-repeat center / cover url({{ asset('/images/intro-bg.jpg') }}); min-height: 30vh">
+        <h1 class="col my-5 text-center">Центр Недвижимости<br/> «Родные Пенаты»</h1>
+    </div>
+
+    <div class="row block px-sm-5 pb-5">
+        <h2 class="mt-5">Наши ценности</h2>
+
+        <div class="container-fluid text-justify hyphenate">
+            <div class="row my-3 align-items-center">
+                <div class="col-md-5 order-md-12"><img class="img-fluid rounded" src="{{ asset('images/gallery.jpg') }}" /></div>
+                <div class="col-md-7 order-md-1 mt-2">
+                    <p>Мы считаем, что недвижимость – основа семьи и полноценной жизни. Такой же основой является культура народа. Как недвижимость объединяет людей, которые в ней живут, так и культура объединяет людей, живущих в этой стране.</p>
+                </div>
+            </div>
+            <div class="row my-3 align-items-center">
+                <div class="col-md-5"><img class="img-fluid rounded" src="{{ asset('images/innovation.jpg') }}" /></div>
+                <div class="col-md-7 mt-2">
+                    <p>Мы верим, что в современном мире бизнес не может жить и процветать без инноваций и творческого подхода руководства компании и каждого члена коллектива. Именно поэтому:
+                        <ul>
+                            <li>наш слоган «Бизнес – стабильность, инновации, творчество»;</li>
+                            <li>мы провели три Московских (2004, 2005, 2007 гг) и три Международных фестивалей творчества профессионалов рынка недвижимости «Вдохновение» (2011, 2012, 2013 гг);</li>
+                            <li>мы провели форум «Инновации. Творчество. Бизнес» в 2012 году.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="row my-3 align-items-center">
+                <div class="col-md-5 order-md-12"><img class="img-fluid rounded" src="{{ asset('images/realtor.jpg') }}" /></div>
+                <div class="col-md-7 order-md-1 mt-2">
+                    <p>Мы понимаем, что недвижимость – один из главных факторов, определяющих стиль жизни любого человека. От того каковы жилищные условия, где  живет человек и в каком окружении зависит <strong>как</strong> он живет. И именно поэтому:   задача консультанта  в сфере недвижимости, брокера и риэлтора помочь клиенту понять какой именно образ жизни будет для него максимально комфортным на данном этапе жизни и достичь этого идеального образа жизни наикратчайшим путем, в том числе через сделки с недвижимостью.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

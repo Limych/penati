@@ -9,11 +9,17 @@ require('./bootstrap');
 require('./google-analytics');
 
 window.Typograf = require('typograf');
+require('./jquery.hyphen.ru');
+require('./jquery.parallax');
 
-window.Vue = require('vue');
-window.BootstrapVue = require('bootstrap-vue');
 
-Vue.use(BootstrapVue);
+
+// Vue
+
+// window.Vue = require('vue');
+// window.BootstrapVue = require('bootstrap-vue');
+//
+// Vue.use(BootstrapVue);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -22,7 +28,7 @@ Vue.use(BootstrapVue);
  */
 
 // Vue.component('example', require('./components/Example.vue'));
-//
+
 // const app = new Vue({
 //     el: '#app'
 // });

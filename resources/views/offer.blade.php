@@ -1,10 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title')
-
-    {{ $offer->title }} ({{ $offer->address }})
-
-@endsection
+@section('title'){{ $offer->title }} ({{ $offer->address }})@endsection
 
 @section('sidebar-contacts')
 
