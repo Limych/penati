@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\MakeUser::class,
-        Commands\YandexXMLImport::class,
+        Commands\ImportFeed::class,
+        Commands\ImportYandex::class,
     ];
 
     /**

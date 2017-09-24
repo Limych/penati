@@ -144,7 +144,7 @@
     <!-- Аренда. Койко-место -->
     <object>
         <Category>bedRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982379</ExternalId>
         <RoomsForSaleCount>42</RoomsForSaleCount>
         <Description>Текст объявления.</Description>
         <RoomArea>4.2</RoomArea>
@@ -280,7 +280,7 @@
     <!-- Аренда. Комната -->
     <object>
         <Category>roomRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982380</ExternalId>
         <RoomsForSaleCount>42</RoomsForSaleCount>
         <RoomType>both</RoomType>
         <Description>Текст объявления.</Description>
@@ -416,7 +416,7 @@
     <!-- Аренда. Дом/Дача -->
     <object>
         <Category>houseRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982381</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -542,7 +542,7 @@
     <!-- Аренда. Коттедж -->
     <object>
         <Category>cottageRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982382</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -668,7 +668,7 @@
     <!-- Аренда. Таунхаус -->
     <object>
         <Category>townhouseRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982383</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -794,7 +794,7 @@
     <!-- Аренда. Часть дома -->
     <object>
         <Category>houseShareRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982384</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -922,7 +922,7 @@
     <!-- Аренда. Гараж -->
     <object>
         <Category>garageRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982385</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -1045,7 +1045,7 @@
     <!-- Аренда. Готовый бизнес -->
     <object>
         <Category>businessRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982386</ExternalId>
         <PropertyType>building</PropertyType>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
@@ -1165,7 +1165,7 @@
     <!-- Аренда. Здание -->
     <object>
         <Category>buildingRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982387</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -1309,7 +1309,7 @@
     <!-- Аренда. Коммерческая земля -->
     <object>
         <Category>commercialLandRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982388</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -1444,7 +1444,7 @@
     <!-- Аренда. Офис -->
     <object>
         <Category>officeRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982389</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -1614,7 +1614,7 @@
     <!-- Аренда. Помещение свободного назначения -->
     <object>
         <Category>freeAppointmentObjectRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982390</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -1754,7 +1754,7 @@
     <!-- Аренда. Производство -->
     <object>
         <Category>industryRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982391</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -1932,7 +1932,7 @@
     <!-- Аренда. Склад -->
     <object>
         <Category>warehouseRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982392</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -2110,7 +2110,7 @@
     <!-- Аренда. Торговая площадь -->
     <object>
         <Category>shoppingAreaRent</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982393</ExternalId>
         <Description>Текст объявления.</Description>
         <PlacementType>shoppingMall</PlacementType>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
@@ -2303,7 +2303,7 @@
     <!-- Продажа. Доля в квартире -->
     <object>
         <Category>flatShareSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982395</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -2418,7 +2418,7 @@
     <!-- Продажа. Квартира -->
     <object>
         <Category>flatSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982396</ExternalId>
         <RoomType>both</RoomType>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
@@ -2534,7 +2534,7 @@
     <!-- Продажа. Квартира в новостройке -->
     <object>
         <Category>newBuildingFlatSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982397</ExternalId>
         <RoomType>both</RoomType>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
@@ -2669,7 +2669,7 @@
     <!-- Продажа. Комната -->
     <object>
         <Category>roomSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982398</ExternalId>
         <RoomsForSaleCount>42</RoomsForSaleCount>
         <RoomType>both</RoomType>
         <Description>Текст объявления.</Description>
@@ -2781,7 +2781,7 @@
     <!-- Продажа. Дом/Дача -->
     <object>
         <Category>houseSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982399</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -2889,7 +2889,7 @@
     <!-- Продажа. Коттедж -->
     <object>
         <Category>cottageSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982400</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -2997,7 +2997,7 @@
     <!-- Продажа. Таунхаус -->
     <object>
         <Category>townhouseSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982401</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3105,7 +3105,7 @@
     <!-- Продажа. Участок -->
     <object>
         <Category>landSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982402</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3198,7 +3198,7 @@
     <!-- Продажа. Часть дома -->
     <object>
         <Category>houseShareSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982403</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3301,7 +3301,7 @@
     <!-- Продажа. Гараж -->
     <object>
         <Category>garageSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982404</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3414,7 +3414,7 @@
     <!-- Продажа. Готовый бизнес -->
     <object>
         <Category>businessSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982405</ExternalId>
         <PropertyType>building</PropertyType>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
@@ -3519,7 +3519,7 @@
     <!-- Продажа. Здание -->
     <object>
         <Category>buildingSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982406</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3650,7 +3650,7 @@
     <!-- Продажа. Коммерческая земля -->
     <object>
         <Category>commercialLandSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982407</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3772,7 +3772,7 @@
     <!-- Продажа. Офис -->
     <object>
         <Category>officeSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982408</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -3930,7 +3930,7 @@
     <!-- Продажа. Помещение свободного назначения -->
     <object>
         <Category>freeAppointmentObjectSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982409</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -4058,7 +4058,7 @@
     <!-- Продажа. Производство -->
     <object>
         <Category>industrySale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982410</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -4224,7 +4224,7 @@
     <!-- Продажа. Склад -->
     <object>
         <Category>warehouseSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982411</ExternalId>
         <Description>Текст объявления.</Description>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>
         <Coordinates>
@@ -4390,7 +4390,7 @@
     <!-- Продажа. Торговая площадь -->
     <object>
         <Category>shoppingAreaSale</Category>
-        <ExternalId>10982378</ExternalId>
+        <ExternalId>10982412</ExternalId>
         <Description>Текст объявления.</Description>
         <PlacementType>shoppingMall</PlacementType>
         <Address>Москва, 3-й Кадашёвский переулок, 9</Address>

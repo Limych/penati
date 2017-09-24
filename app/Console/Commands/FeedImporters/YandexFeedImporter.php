@@ -1,19 +1,18 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
  */
 
 /**
  * Created by PhpStorm.
  * User: Limych
- * Date: 06.09.2017
- * Time: 0:34
+ * Date: 21.09.2017
+ * Time: 0:00
  */
 
-namespace Penati\Console\Commands;
+namespace Penati\Console\Commands\FeedImporters;
 
 use Carbon\Carbon;
-use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
 use Penati\ContentBlocks\DescriptionContentBlock;
@@ -22,25 +21,55 @@ use Penati\Offer;
 use Penati\User;
 use Ramsey\Uuid\Uuid;
 
-class YandexXMLImport extends Command
+class YandexFeedImporter
 {
 
     const YANDEX_NS = 'http://webmaster.yandex.ru/schemas/feed/realty/2010-06';
 
     /**
-     * The name and signature of the console command.
+     * Check for ability to import real estate offers feed
      *
-     * @var string
+     * @param \XMLReader $reader
+     * @return boolean
      */
-    protected $signature = 'import:yandex {feed_url?}';
+    public function canImport(\XMLReader $reader)
+    {
+        return ($reader->nodeType == \XMLReader::ELEMENT)
+            && ($reader->localName == 'realty-feed')
+            && ($reader->namespaceURI == self::YANDEX_NS);
+    }
 
     /**
-     * The console command description.
+     * Import real estate offers feed to database
      *
-     * @var string
+     * @param Application $app
+     * @param string $feed
+     * @param \XMLReader $reader
+     * @throws \Exception
      */
-    protected $description = 'Import Yandex XML feed of real-estate objects';
+    public function import(Application $app, $feed, \XMLReader $reader)
+    {
+        do {
+            if ($reader->nodeType == \XMLReader::ELEMENT
+                && ($reader->localName == 'offer') && ($reader->namespaceURI == self::YANDEX_NS)
+            ) {
+                try {
+                    $this->readOffer($feed, $reader);
+                } catch (\Exception $ex) {
+                    if ($app->environment() !== 'production') {
+                        throw $ex;
+                    }
+                }
+            }
+        } while ($reader->read());
+    }
 
+    /**
+     * Make human readable price
+     *
+     * @param $data
+     * @return string
+     */
     protected static function normalizePrice($data)
     {
         $fmt = new \NumberFormatter('ru-RU', \NumberFormatter::CURRENCY);
@@ -49,41 +78,11 @@ class YandexXMLImport extends Command
     }
 
     /**
-     * Execute the console command.
+     * Read offer from feed and add it to database
      *
-     * @param Application $app
-     * @return mixed
-     * @throws \Exception
+     * @param $feed_url
+     * @param \XMLReader $xml
      */
-    public function handle(Application $app)
-    {
-        $feed_url = $this->argument('feed_url') ?: env('IMPORT_YANDEX');
-        if (empty($feed_url)) {
-            $this->error('Empty feed URL.');
-            return 1;
-        }
-
-        $reader = new \XMLReader();
-        $reader->open($feed_url);
-        $reader->read();
-        do {
-            if ($reader->nodeType == \XMLReader::ELEMENT
-                && ($reader->localName == 'offer') && ($reader->namespaceURI == self::YANDEX_NS)
-            ) {
-                try {
-                    $this->readOffer($feed_url, $reader);
-                } catch (\Exception $ex) {
-                    if ($app->environment() !== 'production') {
-                        throw $ex;
-                    }
-                }
-            }
-        } while ($reader->read());
-        $reader->close();
-
-        return 0;
-    }
-
     protected function readOffer($feed_url, \XMLReader $xml)
     {
         $data = [];
@@ -156,8 +155,8 @@ class YandexXMLImport extends Command
                         $data[$key] = $this->readAgent($xml);
                         break;
                     default:
-                        self::skipElement($xml);
-                        break;
+                        $xml->next();
+                        continue;
                 }
             }
             $xml->read(); // Advance the reader
@@ -191,34 +190,39 @@ class YandexXMLImport extends Command
         $offer->touch();
 
         if (! empty($data['description'])) {
-            $offer->contentBlocks()->save(new DescriptionContentBlock([
-                'title' => Str::ucfirst($data['category']) . ' ' . $data['area'],
-                'summary' => $data['location']['address'],
-                'content' => $data['description'],
-            ]));
+            static::updateBlock($offer, DescriptionContentBlock::class, [
+                    'title' => Str::ucfirst($data['category']) . ' ' . $data['area'],
+                    'summary' => $data['location']['address'],
+                    'content' => $data['description'],
+            ]);
         }
         if (! empty($data['images'])) {
-            $offer->contentBlocks()->save(new PhotosContentBlock([
+            static::updateBlock($offer, PhotosContentBlock::class, [
                 'title' => 'Фотогалерея объекта',
                 'content' => implode("\n", $data['images']),
-            ]));
+            ]);
         }
     }
 
-    protected static function skipElement(\XMLReader $xml)
+    /**
+     * @param Offer $offer
+     * @param string $model_class
+     * @param $attributes
+     * @internal param array $blocks
+     */
+    protected static function updateBlock($offer, $model_class, $attributes)
     {
-        if (! $xml->isEmptyElement) {
-            $xml->read();
-            while ($xml->nodeType != \XMLReader::END_ELEMENT) {
-                if ($xml->nodeType != \XMLReader::ELEMENT) {
-                    // No-op: skip any insignificant whitespace, comments, etc.
-                } else {
-                    // Skip child element
-                    self::skipElement($xml);
-                }
-                $xml->read(); // Advance the reader
+        foreach ($offer->contentBlocks()->getModels() as $block) {
+            if (get_class($block) === $model_class) {
+                // Update existing block
+                $block->update($attributes);
+                $block->touch();
+                return;
             }
         }
+
+        // Create new block
+        $offer->contentBlocks()->save(new $model_class($attributes));
     }
 
     protected function readAssoc(\XMLReader $xml)
@@ -267,12 +271,12 @@ class YandexXMLImport extends Command
     {
         $data = $this->readAssoc($xml);
 
-        $agent = User::where('name', $data['name'])->first();
+        $agent = User::whereName($data['name'])->first();
         if (empty($agent)) {
             $contacts = [];
             $tmp = is_array($data['phone']) ? $data['phone'] : [ $data['phone'] ];
             foreach ($tmp as $phone) {
-                $contacts[] = self::phone2Uri($phone);
+                $contacts[] = static::phone2Uri($phone);
             }
             if (! empty($data['email'])) {
                 $contacts[] = 'mailto:' . $data['email'];
