@@ -23,8 +23,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//         $schedule->command('import:yandex')
-//                  ->daily();
+         $schedule->command('import:feed', ['feed_url' => '=cfg'])
+                  ->twiceDaily();
     }
 
     /**
