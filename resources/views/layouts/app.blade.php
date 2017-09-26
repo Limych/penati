@@ -82,7 +82,7 @@
 
     @hasSection('auth-mode')
     @else
-        <footer class="bg-dark text-light text-right p-3 pt-4 typografy">
+        <footer class="bg-dark text-light text-right p-3 pt-4 typografy small">
             <p>Copyright © 2017, «Центр Недвижимости “Родные Пенаты”». Все права защищены</p>
             <ul class="list-inline">
                 {{--<li class="list-inline-item ml-4"><a href="{{ route('about_personal-data') }}" class="text-light">Обработка персональных данных и&nbsp;правовая информация</a></li>--}}

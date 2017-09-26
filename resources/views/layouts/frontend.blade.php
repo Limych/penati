@@ -9,7 +9,7 @@
             <nav id="sidebar" class="col-md-2 text-center"><div id="sidebar-sticker" class="py-3">
                 @section('sidebar')
                     <div id="logo">
-                        <a href="{{ route('home') }}"><img class="img-fluid" style="max-height: 4rem" alt="Родные Пенаты" src="{{ asset('images/penati-logo.png') }}" /></a>
+                        <a href="{{ route('home') }}"><img class="img-fluid" style="max-height: 4rem" alt="Родные Пенаты" src="{{ asset('penati-logo.png') }}" /></a>
                     </div>
                 @show
                 <div id="sidebar-contacts" class="typography">

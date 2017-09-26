@@ -26,14 +26,16 @@ if (env('APP_DEBUG')) {
     });
 }
 
-Route::prefix('about')->group(function () {
-    Route::get('personal-data', function () {
-        return view('about.personal-data');
-    })->name('about_personal-data');
-    Route::get('cookies', function () {
-        return view('about.cookies');
-    })->name('about_cookies');
-});
+if (env('APP_DEBUG')) { // TODO: Убрать, когда будут проверена политика работы с персональными данными
+    Route::prefix('about')->group(function () {
+        Route::get('personal-data', function () {
+            return view('about.personal-data');
+        })->name('about_personal-data');
+        Route::get('cookies', function () {
+            return view('about.cookies');
+        })->name('about_cookies');
+    });
+}
 
 Route::get('/', function () {
     return view('index');
@@ -41,9 +43,11 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 
 // Agents
-Route::resource('agents', 'AgentController', ['only' => [
-    'show'
-]]);
+if (env('APP_DEBUG')) { // TODO: Убрать, когда будут сделаны страницы агентов
+    Route::resource('agents', 'AgentController', ['only' => [
+        'show'
+    ]]);
+}
 
 // Offers
 Route::get('offers/{id}', function ($id) {
