@@ -4,7 +4,7 @@ set -e
 echo "Cleaning production directory..."
 rm -Rf production
 
-git clone -b master git+ssh://git@github.com/Limych/penati.git production
+git clone --depth=1 -b master git+ssh://git@github.com/Limych/penati.git production
 cd production/
 #composer install --no-scripts --no-interaction
 ln -sf ../vendor/
