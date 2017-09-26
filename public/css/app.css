@@ -12490,6 +12490,12 @@ a.text-dark:hover {
   opacity: 0.2;
 }
 
+@media print {
+  #navbar-login {
+    display: none !important;
+  }
+}
+
 #navbar-login:hover,
 #navbar-login:active {
   opacity: 1;
@@ -12510,15 +12516,42 @@ a.text-dark:hover {
   }
 }
 
+@media print {
+  #sidebar {
+    display: none !important;
+  }
+}
+
 #main-container {
   min-height: 100vh;
-  border-left: 1px solid #DDD;
+}
+
+@media (min-width: 768px) {
+  #main-container {
+    border-left: 1px solid #DDD;
+  }
+}
+
+@media print {
+  #main-container {
+    border-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .block {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 #header {
   background: url("/../images/intro-bg.jpg") no-repeat center;
   background-size: cover;
   min-height: 40vh;
+}
+
+footer {
+  font-size: smaller;
 }
 
 .block {

@@ -45,6 +45,36 @@ namespace Penati\ContentBlocks{
 
 namespace Penati\ContentBlocks{
 /**
+ * Penati\ContentBlocks\CoverContentBlock
+ *
+ * @property int $id
+ * @property int $entity_id
+ * @property string $entity_type
+ * @property int $sort_key
+ * @property string $type
+ * @property string $title
+ * @property string|null $summary
+ * @property string $content
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereEntityType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereSortKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereSummary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Penati\ContentBlocks\CoverContentBlock whereUpdatedAt($value)
+ */
+	class CoverContentBlock extends \Eloquent {}
+}
+
+namespace Penati\ContentBlocks{
+/**
  * Penati\ContentBlocks\DescriptionContentBlock
  *
  * @property int $id

@@ -1,9 +1,15 @@
+@hasSection('auth-mode')
+    @section('meta-robots')none @endsection
+@endif
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}"><head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+@hasSection('meta-robots')
+    <meta name="robots" content="@yield('meta-robots')"/>
+@endif
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -61,29 +67,30 @@
 
     </nav>
     @else
-    <nav id="navbar-login" class="navbar navbar-light">
-        <a class="btn btn-sm btn-light" href="{{ route('login') }}" role="button"
-           -data-toggle="modal" -data-target="#dlgLogin" title="Sign In">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-        </a>
-    </nav>
+        @hasSection('auth-mode')
+        @else
+            <nav id="navbar-login" class="navbar navbar-light">
+                <a class="btn btn-sm btn-light" href="{{ route('login') }}" role="button"
+                   -data-toggle="modal" -data-target="#dlgLogin" title="Sign In">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </a>
+            </nav>
+        @endif
     @endauth
 
     @yield('content')
 
-    <style>
-        footer {
-            font-size: smaller;
-        }
-    </style>
-    <footer class="bg-dark text-light text-right p-3 pt-4 typografy">
-        <p>Copyright © 2017, «Центр Недвижимости “Родные Пенаты”». Все права защищены</p>
-        <ul class="list-inline">
-            <li class="list-inline-item ml-4"><a href="{{ route('about_personal-data') }}" class="text-light">Обработка персональных данных и&nbsp;правовая информация</a></li>
-            <li class="list-inline-item ml-4"><a href="{{ route('about_cookies') }}" class="text-light">Информация о&nbsp;cookie-файлах</a></li>
-            {{--<li class="list-inline-item ml-4"><a href="" class="text-light">Написать нам</a></li>--}}
-        </ul>
-    </footer>
+    @hasSection('auth-mode')
+    @else
+        <footer class="bg-dark text-light text-right p-3 pt-4 typografy">
+            <p>Copyright © 2017, «Центр Недвижимости “Родные Пенаты”». Все права защищены</p>
+            <ul class="list-inline">
+                {{--<li class="list-inline-item ml-4"><a href="{{ route('about_personal-data') }}" class="text-light">Обработка персональных данных и&nbsp;правовая информация</a></li>--}}
+                {{--<li class="list-inline-item ml-4"><a href="{{ route('about_cookies') }}" class="text-light">Информация о&nbsp;cookie-файлах</a></li>--}}
+                {{--<li class="list-inline-item ml-4"><a href="" class="text-light">Написать нам</a></li>--}}
+            </ul>
+        </footer>
+    @endif
 
 </div>
 

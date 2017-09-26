@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('auth-mode')true @endsection
+
 @section('content')
 
     <div class="container">

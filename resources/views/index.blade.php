@@ -13,14 +13,14 @@
 
         <div class="container-fluid text-justify hyphenate">
             <div class="row my-3 align-items-center">
-                <div class="col-md-5 order-md-12"><img class="img-fluid rounded" src="{{ asset('images/gallery.jpg') }}" /></div>
-                <div class="col-md-7 order-md-1 mt-2">
+                <div class="col-sm-5 order-sm-12"><img class="img-fluid rounded" src="{{ asset('images/gallery.jpg') }}" /></div>
+                <div class="col-sm-7 order-sm-1 mt-2">
                     <p>Мы считаем, что недвижимость – основа семьи и полноценной жизни. Такой же основой является культура народа. Как недвижимость объединяет людей, которые в ней живут, так и культура объединяет людей, живущих в этой стране.</p>
                 </div>
             </div>
             <div class="row my-3 align-items-center">
-                <div class="col-md-5"><img class="img-fluid rounded" src="{{ asset('images/innovation.jpg') }}" /></div>
-                <div class="col-md-7 mt-2">
+                <div class="col-sm-5"><img class="img-fluid rounded" src="{{ asset('images/innovation.jpg') }}" /></div>
+                <div class="col-sm-7 mt-2">
                     <p>Мы верим, что в современном мире бизнес не может жить и процветать без инноваций и творческого подхода руководства компании и каждого члена коллектива. Именно поэтому:
                         <ul>
                             <li>наш слоган «Бизнес – стабильность, инновации, творчество»;</li>
@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div class="row my-3 align-items-center">
-                <div class="col-md-5 order-md-12"><img class="img-fluid rounded" src="{{ asset('images/realtor.jpg') }}" /></div>
-                <div class="col-md-7 order-md-1 mt-2">
+                <div class="col-sm-5 order-sm-12"><img class="img-fluid rounded" src="{{ asset('images/realtor.jpg') }}" /></div>
+                <div class="col-sm-7 order-sm-1 mt-2">
                     <p>Мы понимаем, что недвижимость – один из главных факторов, определяющих стиль жизни любого человека. От того каковы жилищные условия, где  живет человек и в каком окружении зависит <strong>как</strong> он живет. И именно поэтому:   задача консультанта  в сфере недвижимости, брокера и риэлтора помочь клиенту понять какой именно образ жизни будет для него максимально комфортным на данном этапе жизни и достичь этого идеального образа жизни наикратчайшим путем, в том числе через сделки с недвижимостью.</p>
                 </div>
             </div>
