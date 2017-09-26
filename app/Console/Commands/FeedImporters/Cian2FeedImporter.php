@@ -159,7 +159,7 @@ class Cian2FeedImporter
             case 'cottageSale':
             case 'cottageRent':
                 $cover = ! $isRent ? "Продаётся дом" : "Дом в аренду";
-                if ($data['SettlementName']) {
+                if (! empty($data['SettlementName'])) {
                     $cover .= " в посёлке \"${data['SettlementName']}\"";
                 }
                 $title = "Дом площадью ${data['TotalArea']} м² с ${data['BedroomsCount']} спальн" .
@@ -167,10 +167,10 @@ class Cian2FeedImporter
                 break;
             case 'flatSale':
             case 'flatRent':
-                if ($data['IsPenthouse']) {
+                if (! empty($data['IsPenthouse'])) {
                     $cover = !$isRent ? "Продаётся пентхаус" : "Пентхаус в аренду";
                     $title = "${data['FlatRoomsCount']}-комнатный пентхаус, ${data['TotalArea']} м²";
-                } elseif ($data['IsApartments']) {
+                } elseif (! empty($data['IsApartments'])) {
                     $cover = !$isRent ? "Продаются апартаменты" : "Квартира в аренду";
                     $title = "${data['FlatRoomsCount']}-комнатная квартира, ${data['TotalArea']} м²." .
                         " ${data['FloorNumber']} этаж";

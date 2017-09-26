@@ -48,15 +48,17 @@ class ImportFeed extends Command
         parent::__construct();
 
         $dir = __DIR__ . '/FeedImporters';
-        $files = scandir($dir);
-        foreach ($files as $file) {
-            $fpath = "$dir/$file";
-            if (is_readable($fpath) && (false !== $res = file_get_contents($fpath))
-                && preg_match("/\bclass\s+(\w+FeedImporter)\b/", $res, $matches)
-            ) {
-                $class = $matches[1];
-                preg_match("/\bnamespace\s+([^;\s]+)/", $res, $matches);
-                $this->importers[] = $matches[1] . '\\' . $class;
+        $files = @scandir($dir);
+        if ($files) {
+            foreach ($files as $file) {
+                $fpath = "$dir/$file";
+                if (is_file($fpath) && is_readable($fpath) && (false !== $res = file_get_contents($fpath))
+                    && preg_match("/\bclass\s+(\w+FeedImporter)\b/", $res, $matches)
+                ) {
+                    $class = $matches[1];
+                    preg_match("/\bnamespace\s+([^;\s]+)/", $res, $matches);
+                    $this->importers[] = $matches[1] . '\\' . $class;
+                }
             }
         }
 

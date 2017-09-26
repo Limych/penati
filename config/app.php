@@ -179,6 +179,7 @@ return [
         Penati\Providers\EventServiceProvider::class,
         Penati\Providers\RouteServiceProvider::class,
         Penati\Providers\YandexMapProvider::class,
+        \Penati\Providers\RedirectAwayProvider::class,
 
     ],
 

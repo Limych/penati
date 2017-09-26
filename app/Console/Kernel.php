@@ -13,9 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\MakeUser::class,
-        Commands\ImportFeed::class,
-        Commands\ImportYandex::class,
     ];
 
     /**
