@@ -12,10 +12,18 @@ let mix = require('laravel-mix');
  |
  */
 
+// Fonts & Icons
+mix.sass('resources/assets/sass/fonts.scss', 'public/css');
+
+// Main application assets
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .copy('resources/assets/images/', 'public/images', false)
     .autoload({
-        jquery: ['$', 'window.jQuery',"jQuery","window.$","jquery","window.jquery"],
+        jquery: ['$', 'window.jQuery', "jQuery", "window.$", "jquery", "window.jquery"],
         'popper.js/dist/umd/popper.js': ['Popper']
     });
+
+// Dashboard assets
+mix.js('node_modules/coreui.io/Static_Full_Project_GULP/js/app.js', 'public/js/dashboard.js')
+    .sass('resources/assets/sass/dashboard.scss', 'public/css');

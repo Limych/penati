@@ -1,5 +1,20 @@
 @hasSection('auth-mode')
     @section('meta-robots')none @endsection
+    @push('styles')
+        <style>
+            .app {
+                background-color: #e4e5e6;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                min-height: 100vh;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+            }
+        </style>
+    @endpush
 @endif
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}"><head>
@@ -20,23 +35,31 @@
     <meta property="og:site_name" content="Центр Недвижимости &laquo;Родные Пенаты&raquo;" />
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-</head><body>
-<div id="app">
-
-    {{-- top bar  --}}
+    <link href="{{ mix('css/fonts.css') }}" rel="stylesheet" />
     @auth
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <link href="{{ mix('css/dashboard.css') }}" rel="stylesheet" />
+    @else
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
+        @hasSection('auth-mode')
+            <link rel="prefetch" href="{{ mix('css/dashboard.css') }}" />
+        @endif
+    @endif
+    @stack('styles')
 
-        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+</head><body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden footer-fixed">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                @if (env('APP_DEBUG'))
+{{-- top bar  --}}
+@auth
+    <header class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
+        <a class="navbar-brand" href="{{ route('dashboard') }}"></a>
+        <button class="navbar-toggler sidebar-minimizer d-md-down-none" type="button">☰</button>
+
+        <ul class="nav navbar-nav d-md-down-none">
+            {{--<li class="nav-item px-3">--}}
+                {{--<a class="nav-link" href="#">Dashboard</a>--}}
+            {{--</li>--}}
+            @if (env('APP_DEBUG'))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Models
@@ -46,53 +69,62 @@
                         <a class="dropdown-item" href="{{ url('/_dev/offer') }}">Offers</a>
                     </div>
                 </li>
-                @endif
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a href="{{ route('logout') }}" class="dropdown-item"
-                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-    </nav>
-    @else
-        @hasSection('auth-mode')
-        @else
-            <nav id="navbar-login" class="navbar navbar-light">
-                <a class="btn btn-sm btn-light" href="{{ route('login') }}" role="button"
-                   -data-toggle="modal" -data-target="#dlgLogin" title="Sign In">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+            @endif
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item d-down-none">
+                <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+            </li>
+            {{--<li class="nav-item d-md-down-none">--}}
+                {{--<a class="nav-link" href="#"><i class="icon-list"></i></a>--}}
+            {{--</li>--}}
+            {{--<li class="nav-item d-md-down-none">--}}
+                {{--<a class="nav-link" href="#"><i class="icon-location-pin"></i></a>--}}
+            {{--</li>--}}
+            <li class="nav-item dropdown">
+                <a id="account-menu" class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{ gravatar(Auth::user()->email)->setDefaultImage('mm')->setExtension('jpg')->setSize(35) }}" class="img-avatar" aria-hidden="true">
+                    <span class="d-md-down-none">{{ Auth::user()->name }}</span>
                 </a>
-            </nav>
-        @endif
-    @endauth
+                <div class="dropdown-menu dropdown-menu-right">
+                    {{--<div class="dropdown-header text-center">--}}
+                        {{--<strong>Account</strong>--}}
+                    {{--</div>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-bell-o mr-2"></i>Updates<span class="badge badge-info">42</span></a>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-envelope-o mr-2"></i>Messages<span class="badge badge-success">42</span></a>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-tasks mr-2"></i>Tasks<span class="badge badge-danger">42</span></a>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-comments mr-2"></i>Comments<span class="badge badge-warning">42</span></a>--}}
+                    {{--<div class="dropdown-header text-center">--}}
+                        {{--<strong>Settings</strong>--}}
+                    {{--</div>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-user mr-2"></i>Profile</a>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-wrench mr-2"></i>Settings</a>--}}
+                    {{--<a class="dropdown-item" href="#"><i class="fa fa-usd mr-2"></i>Payments<span class="badge badge-secondary">42</span></a>--}}
+                    {{--<div class="divider"></div>--}}
+                    <a class="dropdown-item" href="#"
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-2"></i>Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">{{ csrf_field() }}</form>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler aside-menu-toggler" type="button">☰</button>
 
-    @yield('content')
-
+    </header>
+@else
     @hasSection('auth-mode')
     @else
-        <footer class="bg-dark text-light text-right p-3 pt-4 typografy small">
-            <p>Copyright © 2017, «Центр Недвижимости “Родные Пенаты”». Все права защищены</p>
-            <ul class="list-inline">
-                {{--<li class="list-inline-item ml-4"><a href="{{ route('about_personal-data') }}" class="text-light">Обработка персональных данных и&nbsp;правовая информация</a></li>--}}
-                {{--<li class="list-inline-item ml-4"><a href="{{ route('about_cookies') }}" class="text-light">Информация о&nbsp;cookie-файлах</a></li>--}}
-                {{--<li class="list-inline-item ml-4"><a href="" class="text-light">Написать нам</a></li>--}}
-            </ul>
-        </footer>
+        <nav id="navbar-login" class="navbar navbar-light">
+            <a class="btn btn-sm btn-light" href="{{ route('login') }}" role="button"
+               data-toggle="modal" data-target="#dlgLogin" title="Sign In">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+            </a>
+        </nav>
+        @include('auth.modal-login')
     @endif
+@endauth
 
-</div>
+@yield('content')
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
@@ -104,6 +136,13 @@
         });
         $('.hyphenate').hyphenate();
         $('.parallax').parallax();
+
+        $('#dlgLogin').on('shown.bs.modal', function () {
+            $('#dlgLoginEmail').focus()
+        })
+        @if($errors->count())
+        $('#dlgLogin').modal('show');
+        @endif
     });
 </script>
 @stack('scripts')

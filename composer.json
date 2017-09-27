@@ -7,9 +7,16 @@
         "homepage" : "https://github.com/Limych"
     }],
     "minimum-stability" : "stable",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/Limych/laravel-gravatar.git"
+        }
+    ],
     "require": {
         "php": ">=7.0",
         "fideloper/proxy": "~3.3",
+        "forxer/laravel-gravatar": "dev-master",
         "laravel/framework": "~5.5",
         "laravel/homestead": "~6.1",
         "laravel/tinker": "~1.0",

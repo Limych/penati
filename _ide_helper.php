@@ -12493,6 +12493,14 @@ namespace Silber\Bouncer {
  
 }
 
+namespace forxer\LaravelGravatar { 
+
+    class ServiceProvider {
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -14607,6 +14615,8 @@ namespace  {
     class View extends \Illuminate\Support\Facades\View {}
 
     class Bouncer extends \Silber\Bouncer\BouncerFacade {}
+
+    class Gravatar extends \forxer\LaravelGravatar\ServiceProvider {}
  
 }
 

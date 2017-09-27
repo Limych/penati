@@ -40,7 +40,7 @@ if (env('APP_DEBUG')) { // TODO: Убрать, когда будут прове�
 Route::get('/', function () {
     return view('index');
 })->name('home');
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('dashboard');
 
 // Agents
 if (env('APP_DEBUG')) { // TODO: Убрать, когда будут сделаны страницы агентов

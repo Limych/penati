@@ -1,0 +1,15 @@
+/**
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
+ */
+
+// Import main application styles
+@import "app";
+
+// Import CoreUI styles
+@import "~coreui.io/Static_Full_Project_GULP/scss/core/core";
+
+// Import CoreUI vendors styles
+@import "~coreui.io/Static_Full_Project_GULP/scss/vendors/vendors";
+
+// Dashboard custom styles
+@import "dashboard-custom";

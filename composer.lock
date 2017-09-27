@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9419a87ee0ccf20aa7f2424d1682bca9",
+    "content-hash": "5af5f546ab8c97cfc64c8b6c5b463a41",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -670,6 +670,99 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15T17:19:42+00:00"
+        },
+        {
+            "name": "forxer/gravatar",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/forxer/gravatar.git",
+                "reference": "5feb01c436cbd4569b8ea1a30558d1aee1924444"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/forxer/gravatar/zipball/5feb01c436cbd4569b8ea1a30558d1aee1924444",
+                "reference": "5feb01c436cbd4569b8ea1a30558d1aee1924444",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "forxer\\Gravatar\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Garnier",
+                    "email": "forxer@gmail.org",
+                    "homepage": "http://forx.fr"
+                }
+            ],
+            "description": "A library providing easy gravatar integration.",
+            "keywords": [
+                "gravatar"
+            ],
+            "time": "2017-08-31T19:57:40+00:00"
+        },
+        {
+            "name": "forxer/laravel-gravatar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Limych/laravel-gravatar.git",
+                "reference": "a1a18bbdd29ed99604212e9bae5feb8196479ff1"
+            },
+            "require": {
+                "forxer/gravatar": "~2.0",
+                "illuminate/support": "~5.4.0|~5.5",
+                "php": ">=5.6.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "forxer\\LaravelGravatar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Gravatar": "forxer\\LaravelGravatar\\ServiceProvider"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "forxer\\LaravelGravatar\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Garnier",
+                    "email": "forxer@gmail.org",
+                    "homepage": "http://forx.fr"
+                }
+            ],
+            "description": "A library providing easy gravatar integration in Laravel.",
+            "keywords": [
+                "gravatar",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/forxer/laravel-gravatar/issues",
+                "email": "forxer@gmail.com"
+            },
+            "time": "2017-09-27T19:49:55+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -4749,6 +4842,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "forxer/laravel-gravatar": 20,
         "silber/bouncer": 10
     },
     "prefer-stable": false,

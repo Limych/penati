@@ -10,7 +10,7 @@ window._ = require('lodash');
  */
 
 try {
-    global.$ = global.jQuery = require('jquery');
+    global.$ = window.jQuery = require('jquery');
     window.Popper = Popper;
 
     require('bootstrap');
