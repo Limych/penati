@@ -46,7 +46,7 @@
     @endif
     @stack('styles')
 
-</head><body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden footer-fixed">
+</head><body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden @yield('body-classes')">
 
 {{-- top bar  --}}
 @auth

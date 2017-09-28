@@ -4565,7 +4565,7 @@ tbody.collapse.show {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  background-color: rgba(233, 236, 239, 0.8);
   border-radius: 0.25rem;
 }
 
@@ -9716,6 +9716,11 @@ a.text-dark:hover {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+.auth {
+  background: url("/../images/hills-bg.jpg") no-repeat;
+  background-size: cover;
+}
+
 .hyphenate {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -12117,7 +12122,7 @@ base-chart.chart {
           flex-direction: column;
   padding: 0;
   color: #fff;
-  background: #343a40;
+  background: rgba(52, 58, 64, 0.9);
 }
 
 .sidebar .sidebar-close {
@@ -12149,7 +12154,7 @@ base-chart.chart {
 
 .sidebar .sidebar-form .form-control {
   color: #fff;
-  background: #1d2124;
+  background: rgba(29, 33, 36, 0.9);
   border: 0;
 }
 
@@ -12184,14 +12189,14 @@ base-chart.chart {
 }
 
 .sidebar .sidebar-nav::-webkit-scrollbar-track {
-  background-color: #3f474e;
-  border-right: 1px solid #292d32;
-  border-left: 1px solid #292d32;
+  background-color: rgba(63, 71, 78, 0.9);
+  border-right: 1px solid rgba(41, 45, 50, 0.9);
+  border-left: 1px solid rgba(41, 45, 50, 0.9);
 }
 
 .sidebar .sidebar-nav::-webkit-scrollbar-thumb {
   height: 50px;
-  background-color: #1d2124;
+  background-color: rgba(29, 33, 36, 0.9);
   background-clip: content-box;
   border-color: transparent;
   border-style: solid;
@@ -12272,7 +12277,7 @@ base-chart.chart {
 .sidebar .navbar .active.dropdown-toggle,
 .navbar .sidebar .active.dropdown-toggle {
   color: #fff;
-  background: #3f474e;
+  background: rgba(63, 71, 78, 0.9);
 }
 
 .sidebar .nav-link.active i,
@@ -12370,7 +12375,7 @@ base-chart.chart {
 }
 
 .sidebar .progress {
-  background-color: #56606a !important;
+  background-color: rgba(86, 96, 106, 0.9) !important;
 }
 
 .sidebar .sidebar-footer {
@@ -12536,7 +12541,7 @@ base-chart.chart {
   .sidebar-minimized .sidebar .nav > .nav-dropdown > .nav-dropdown-items {
     display: none;
     max-height: 1000px;
-    background: #343a40;
+    background: rgba(52, 58, 64, 0.9);
   }
 
   .sidebar-minimized .sidebar .nav > .nav-dropdown:hover {

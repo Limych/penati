@@ -6,13 +6,13 @@
         <div class="input-group">
             <span class="input-group-addon"><i class="icon-user"></i></span>
             <input id="dlgLoginEmail" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                   placeholder="E-mail" name="email" value="{{ old('email') }}" />
+                   placeholder="E-mail" name="email" value="{{ old('email') }}" autofocus="autofocus" />
         </div>
         @if ($errors->has('email'))
             <div class="invalid-feedback d-block">{{ $errors->first('email') }}</div>
         @endif
     </div>
-    <div class="form-group mb-4">
+    <div class="form-group mb-3">
         <div class="input-group">
             <span class="input-group-addon"><i class="icon-lock"></i></span>
             <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"

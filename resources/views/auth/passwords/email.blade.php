@@ -2,41 +2,35 @@
 
 @section('auth-mode')true @endsection
 
-<!-- Main Content -->
+@section('body-classes')auth flex-row align-items-center @endsection
+
 @section('content')
 
     <div class="container">
-        <div class="row justify-content-md-center mt-5">
-            <div class="col-md-8">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Reset Password</h4>
+                        <h1>Reset Password</h1>
                         @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
+                            <div class="alert alert-success">{{ session('status') }}</div>
                         @endif
-
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+                        <form role="form" method="POST" action="{{ url('/password/email') }}">
                             {!! csrf_field() !!}
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-12">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                    @if ($errors->has('email'))
-                                        <span class="form-text text-muted">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                    <input id="dlgLoginEmail" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                           placeholder="E-mail" name="email" value="{{ old('email') }}" autofocus="autofocus" />
                                 </div>
+                                @if ($errors->has('email'))
+                                    <div class="invalid-feedback d-block">{{ $errors->first('email') }}</div>
+                                @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="row form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary px-4">
                                         <i class="fa fa-btn fa-envelope mr-2"></i>Send Password Reset Link
                                     </button>
                                 </div>

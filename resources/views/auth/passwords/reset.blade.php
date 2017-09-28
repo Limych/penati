@@ -2,65 +2,52 @@
 
 @section('auth-mode')true @endsection
 
+@section('body-classes')auth flex-row align-items-center @endsection
+
 @section('content')
 
     <div class="container">
-        <div class="row justify-content-md-center mt-5">
-            <div class="col-md-8">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Reset Password</h4>
-
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
+                        <h1>Reset Password</h1>
+                        <form role="form" method="POST" action="{{ url('/password/reset') }}">
                             {!! csrf_field() !!}
-
-                            <input type="hidden" name="token" value="{{ $token }}">
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-12">
-                                    <input type="email" class="form-control" name="email"
-                                           value="{{ $email or old('email') }}">
-
-                                    @if ($errors->has('email'))
-                                        <span class="form-text text-muted">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
+                            <input type="hidden" name="token" value="{{ $token }}" />
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                    <input id="dlgLoginEmail" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                           placeholder="E-mail" name="email" value="{{ $email or old('email') }}" autofocus="autofocus" />
                                 </div>
+                                @if ($errors->has('email'))
+                                    <div class="invalid-feedback d-block">{{ $errors->first('email') }}</div>
+                                @endif
                             </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-12">
-                                    <input type="password" class="form-control" name="password">
-
-                                    @if ($errors->has('password'))
-                                        <span class="form-text text-muted">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                    <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                           placeholder="New Password" />
                                 </div>
+                                @if ($errors->has('password'))
+                                    <div class="invalid-feedback d-block">{{ $errors->first('password') }}</div>
+                                @endif
                             </div>
-
-                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Confirm Password</label>
-                                <div class="col-md-12">
-                                    <input type="password" class="form-control" name="password_confirmation">
-
-                                    @if ($errors->has('password_confirmation'))
-                                        <span class="form-text text-muted">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                    @endif
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                    <input type="password" name="password_confirmation" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
+                                           placeholder="Confirm New Password" />
                                 </div>
+                                @if ($errors->has('password_confirmation'))
+                                    <div class="invalid-feedback d-block">{{ $errors->first('password_confirmation') }}</div>
+                                @endif
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary px-4">
                                         <i class="fa fa-btn fa-refresh mr-2"></i>Reset Password
                                     </button>
                                 </div>
