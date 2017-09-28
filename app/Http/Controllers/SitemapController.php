@@ -10,8 +10,6 @@ use URL;
 class SitemapController extends Controller
 {
 
-    const CACHE_DURATION = 12 * 60; // Minutes
-
     /**
      * Display a sitemap listing.
      *
@@ -21,10 +19,6 @@ class SitemapController extends Controller
     {
         // create new sitemap object
         $sitemap = App::make('sitemap');
-
-        // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
-        // by default cache is disabled
-        $sitemap->setCache('laravel.sitemap', static::CACHE_DURATION, true);
 
         // check if there is cached sitemap and build new only if is not
         if (! $sitemap->isCached()) {

@@ -20,7 +20,7 @@ class RedirectAwayProvider extends ServiceProvider
     {
         Route::get(static::ROUTE . '/{url}', function ($url) {
             return Redirect::away($url);
-        })->where('url', '+*');
+        })->where('url', '.+');
 
         Blade::directive('away', function ($url) {
             return url(static::ROUTE . '/' . rawurlencode($url));
