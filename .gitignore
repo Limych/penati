@@ -7,6 +7,7 @@ composer.phar
 # Project specific
 /production/
 /.ssh/
+*.bak
 
 # Laravel 5 & Lumen specific
 public/storage

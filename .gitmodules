@@ -1,3 +1,6 @@
 [submodule "packages/laravel-dashboardmaster"]
 	path = packages/laravel-dashboardmaster
 	url = https://github.com/Limych/laravel-dashboardmaster.git
+[submodule "packages/sleepingowl-coreui"]
+	path = packages/sleepingowl-coreui
+	url = https://github.com/Limych/sleepingowl-coreui.git
