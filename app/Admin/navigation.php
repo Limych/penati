@@ -22,7 +22,7 @@
 return [
     [
         'title' => 'Dashboard',
-        'icon'  => 'fa fa-dashboard',
+        'icon'  => 'icon-speedometer',
         'url'   => route('admin.dashboard'),
     ],
 

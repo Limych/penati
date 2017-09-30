@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-09-29.
+    * Generated on 2017-09-30.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -47,7 +47,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,
@@ -196,7 +196,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,
@@ -345,7 +345,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,
@@ -494,7 +494,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,
@@ -643,7 +643,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,
@@ -792,7 +792,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,
@@ -941,7 +941,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.wysiwyg' => \SleepingOwl\Admin\Wysiwyg\Manager::class,
         'assets.packages' => \KodiCMS\Assets\PackageManager::class,
         'sleeping_owl.meta' => \SleepingOwl\Admin\Templates\Meta::class,
-        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+        'sleeping_owl.template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
         'SleepingOwl\Admin\Contracts\Display\TableHeaderColumnInterface' => \SleepingOwl\Admin\Display\TableHeaderColumn::class,
         'SleepingOwl\Admin\Contracts\Repositories\RepositoryInterface' => \SleepingOwl\Admin\Repositories\BaseRepository::class,
         'SleepingOwl\Admin\Contracts\Form\FormButtonsInterface' => \SleepingOwl\Admin\Form\FormButtons::class,

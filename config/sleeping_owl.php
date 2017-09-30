@@ -91,7 +91,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'template' => \Limych\SleepingOwlCoreUI\CoreUITemplate::class,
+    'template' => \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::class,
 
     /*
     |--------------------------------------------------------------------------

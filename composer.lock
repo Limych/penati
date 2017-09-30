@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6a7270657f172699457ddc78d589997",
+    "content-hash": "42e9c486e2ac51feb8d37ccf34509e58",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1627,17 +1627,19 @@
         {
             "name": "limych/sleepingowl-coreui",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "./packages/sleepingowl-coreui/",
-                "reference": "24a02bd0fdb00e35955e743950bdb9a2a751b3e2"
+            "dist": {
+                "type": "path",
+                "url": "./packages/sleepingowl-coreui",
+                "reference": "d9abfefb6c4bab12c7f3c4c24c96e293cbc7f55c",
+                "shasum": null
             },
             "require": {
                 "laravelrus/sleepingowl": "4.*@dev",
                 "php": ">=5.6.4"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*",
+                "mockery/mockery": "~0.9",
+                "orchestra/testbench": "^3.5",
                 "phpunit/phpunit": "~6.0"
             },
             "type": "library",
@@ -1650,8 +1652,12 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Limych\\SleepingOwlCoreUI\\": "src/",
-                    "Limych\\SleepingOwlCoreUI\\Tests\\": "tests/"
+                    "Limych\\SleepingOwlCoreUI\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
                 }
             },
             "license": [
@@ -1668,7 +1674,9 @@
                 "issues": "https://github.com/Limych/sleepingowl-coreui/issues",
                 "source": "https://github.com/Limych/sleepingowl-coreui"
             },
-            "time": "2017-09-29T02:57:38+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "monolog/monolog",

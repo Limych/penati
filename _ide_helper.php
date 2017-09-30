@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.13 on 2017-09-29.
+ * Generated for Laravel 5.5.13 on 2017-09-30.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -15857,7 +15857,7 @@ namespace SleepingOwl\Admin\Facades {
          */ 
         public static function name()
         {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::name();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::name();
         }
         
         /**
@@ -15868,7 +15868,7 @@ namespace SleepingOwl\Admin\Facades {
          */ 
         public static function version()
         {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::version();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::version();
         }
         
         /**
@@ -15879,17 +15879,7 @@ namespace SleepingOwl\Admin\Facades {
          */ 
         public static function homepage()
         {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::homepage();
-        }
-        
-        /**
-         * Initialize class.
-         *
-         * @static 
-         */ 
-        public static function initialize()
-        {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::initialize();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::homepage();
         }
         
         /**
@@ -15900,30 +15890,40 @@ namespace SleepingOwl\Admin\Facades {
          */ 
         public static function getViewNamespace()
         {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::getViewNamespace();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::getViewNamespace();
         }
         
         /**
-         * Получение относительного пути хранения asset файлов.
+         * Get the path to template assets.
          *
          * @return string 
          * @static 
          */ 
         public static function assetDir()
         {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::assetDir();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::assetDir();
+        }
+        
+        /**
+         * Initialize class.
+         *
+         * @static 
+         */ 
+        public static function initialize()
+        {
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::initialize();
         }
         
         /**
          * 
          *
-         * @param string $view
+         * @param string|\View $view
          * @return string 
          * @static 
          */ 
         public static function getViewPath($view)
         {
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::getViewPath($view);
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::getViewPath($view);
         }
         
         /**
@@ -15935,7 +15935,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function getLogo()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\TemplateDefault            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::getLogo();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::getLogo();
         }
         
         /**
@@ -15947,7 +15947,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function getLogoMini()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\TemplateDefault            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::getLogoMini();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::getLogoMini();
         }
         
         /**
@@ -15959,7 +15959,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function longName()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::longName();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::longName();
         }
         
         /**
@@ -15971,7 +15971,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function breadcrumbs()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::breadcrumbs();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::breadcrumbs();
         }
         
         /**
@@ -15983,7 +15983,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function meta()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::meta();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::meta();
         }
         
         /**
@@ -15995,7 +15995,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function navigation()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::navigation();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::navigation();
         }
         
         /**
@@ -16008,7 +16008,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function assetPath($path = null)
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::assetPath($path);
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::assetPath($path);
         }
         
         /**
@@ -16020,7 +16020,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function getTitle()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::getTitle();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::getTitle();
         }
         
         /**
@@ -16034,7 +16034,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function makeTitle($title, $separator = '|')
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::makeTitle($title, $separator);
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::makeTitle($title, $separator);
         }
         
         /**
@@ -16049,7 +16049,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function view($view, $data = array(), $mergeData = array())
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::view($view, $data, $mergeData);
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::view($view, $data, $mergeData);
         }
         
         /**
@@ -16062,7 +16062,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function renderBreadcrumbs($key)
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::renderBreadcrumbs($key);
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::renderBreadcrumbs($key);
         }
         
         /**
@@ -16074,7 +16074,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function renderNavigation()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::renderNavigation();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::renderNavigation();
         }
         
         /**
@@ -16087,7 +16087,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function renderMeta($title)
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::renderMeta($title);
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::renderMeta($title);
         }
         
         /**
@@ -16099,7 +16099,7 @@ namespace SleepingOwl\Admin\Facades {
         public static function toArray()
         {
             //Method inherited from \SleepingOwl\Admin\Templates\Template            
-            return \Limych\SleepingOwlCoreUI\CoreUITemplate::toArray();
+            return \Limych\SleepingOwlCoreUI\Templates\CoreUITemplate::toArray();
         }
          
     }
