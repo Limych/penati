@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f9a86b1631d31e355343cf13561f074",
+    "content-hash": "5be968228d5f73ad8bb35635d6643ea6",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -883,15 +883,21 @@
         },
         {
             "name": "forxer/laravel-gravatar",
-            "version": "dev-master",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Limych/laravel-gravatar.git",
-                "reference": "a1a18bbdd29ed99604212e9bae5feb8196479ff1"
+                "url": "https://github.com/forxer/laravel-gravatar.git",
+                "reference": "b822267b7962177a118ac23eb112f066e313f8cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/forxer/laravel-gravatar/zipball/b822267b7962177a118ac23eb112f066e313f8cc",
+                "reference": "b822267b7962177a118ac23eb112f066e313f8cc",
+                "shasum": ""
             },
             "require": {
                 "forxer/gravatar": "~2.0",
-                "illuminate/support": "~5.4.0|~5.5",
+                "illuminate/support": "5.4.*|5.5.*",
                 "php": ">=5.6.4"
             },
             "type": "library",
@@ -901,7 +907,7 @@
                         "forxer\\LaravelGravatar\\ServiceProvider"
                     ],
                     "aliases": {
-                        "Gravatar": "forxer\\LaravelGravatar\\ServiceProvider"
+                        "Gravatar": "forxer\\LaravelGravatar\\Facade"
                     }
                 }
             },
@@ -913,6 +919,7 @@
                     "src/helpers.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -928,11 +935,7 @@
                 "gravatar",
                 "laravel"
             ],
-            "support": {
-                "issues": "https://github.com/forxer/laravel-gravatar/issues",
-                "email": "forxer@gmail.com"
-            },
-            "time": "2017-09-27T19:49:55+00:00"
+            "time": "2017-10-01T20:11:33+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1630,7 +1633,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/sleepingowl-coreui",
-                "reference": "460d55527a6740f0ec37f645514776683bcbc94e",
+                "reference": "6958510fa2648bb9e36ddd42e8b226912adc582d",
                 "shasum": null
             },
             "require": {
@@ -5219,7 +5222,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "forxer/laravel-gravatar": 20,
         "laravelrus/sleepingowl": 20,
         "limych/sleepingowl-coreui": 20,
         "silber/bouncer": 10
