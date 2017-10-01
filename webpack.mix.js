@@ -25,5 +25,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     });
 
 // Dashboard assets
-mix.js('node_modules/coreui.io/Static_Full_Project_GULP/js/app.js', 'public/js/dashboard.js')
-    .sass('resources/assets/sass/dashboard.scss', 'public/css');
+mix.js('node_modules/coreui.io/Static_Full_Project_GULP/js/app.js', 'public/js/admin.js')
+    .sass('resources/assets/sass/admin.scss', 'public/css');

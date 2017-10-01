@@ -37,11 +37,11 @@
     <!-- Styles -->
     <link href="{{ mix('css/fonts.css') }}" rel="stylesheet" />
     @auth
-        <link href="{{ mix('css/dashboard.css') }}" rel="stylesheet" />
+        <link href="{{ mix('css/admin.css') }}" rel="stylesheet" />
     @else
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
         @hasSection('auth-mode')
-            <link rel="prefetch" href="{{ mix('css/dashboard.css') }}" />
+            <link rel="prefetch" href="{{ mix('css/admin.css') }}" />
         @endif
     @endif
     @stack('styles')

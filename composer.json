@@ -9,6 +9,14 @@
     "minimum-stability" : "stable",
     "repositories": [
     {
+        "type": "path",
+        "url": "./packages/sleepingowl-coreui/",
+        "options": {
+            "symlink": true
+        }
+    },
+
+    {
         "type": "git",
         "url": "./packages/sleepingowl-coreui/"
     },

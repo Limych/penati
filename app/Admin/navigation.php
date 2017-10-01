@@ -19,69 +19,90 @@
 //
 // AdminSection::addMenuPage(\App\User::class)
 
+use SleepingOwl\Admin\Navigation\Page;
+
 return [
     [
         'title' => 'Dashboard',
         'icon'  => 'icon-speedometer',
         'url'   => route('admin.dashboard'),
+        'priority' => 0,
     ],
 
     [
         'title' => 'Information',
-        'icon'  => 'fa fa-exclamation-circle',
+        'icon'  => 'icon-folder',
         'url'   => route('admin.information'),
     ],
 
-    // Examples
-    // [
-    //    'title' => 'Content',
-    //    'pages' => [
-    //
-    //        \App\User::class,
-    //
-    //        // or
-    //
-    //        (new Page(\App\User::class))
-    //            ->setPriority(100)
-    //            ->setIcon('fa fa-user')
-    //            ->setUrl('users')
-    //            ->setAccessLogic(function (Page $page) {
-    //                return auth()->user()->isSuperAdmin();
-    //            }),
-    //
-    //        // or
-    //
-    //        new Page([
-    //            'title'    => 'News',
-    //            'priority' => 200,
-    //            'model'    => \App\News::class
-    //        ]),
-    //
-    //        // or
-    //        (new Page(/* ... */))->setPages(function (Page $page) {
-    //            $page->addPage([
-    //                'title'    => 'Blog',
-    //                'priority' => 100,
-    //                'model'    => \App\Blog::class
-	//		      ));
-    //
-	//		      $page->addPage(\App\Blog::class);
-    //	      }),
-    //
-    //        // or
-    //
-    //        [
-    //            'title'       => 'News',
-    //            'priority'    => 300,
-    //            'accessLogic' => function ($page) {
-    //                return $page->isActive();
-    //		      },
-    //            'pages'       => [
-    //
-    //                // ...
-    //
-    //            ]
-    //        ]
-    //    ]
-    // ]
+    [
+        'title' => 'Extras',
+        'priority' => 1020,
+        'pages' => [
+            [
+                'title' => 'Models',
+                'icon' => 'icon-wrench',
+                'url'   => '#',
+                'pages' => [
+                    (new Page(\Penati\User::class))
+                        ->setIcon('icon-user'),
+                    (new Page(\Penati\Offer::class))
+                        ->setIcon('icon-home'),
+                ],
+            ],
+        ],
+    ],
+
+//    // Examples
+//     [
+//        'title' => 'Content',
+//        'pages' => [
+//
+//            \App\User::class,
+//
+//            // or
+//
+//            (new Page(\App\User::class))
+//                ->setPriority(100)
+//                ->setIcon('fa fa-user')
+//                ->setUrl('users')
+//                ->setAccessLogic(function (Page $page) {
+//                    return auth()->user()->isSuperAdmin();
+//                }),
+//
+//            // or
+//
+//            new Page([
+//                'title'    => 'News',
+//                'priority' => 200,
+//                'model'    => \App\News::class
+//            ]),
+//
+//            // or
+//            (new Page(/* ... */))->setPages(function (Page $page) {
+//                $page->addPage([
+//                    'title'    => 'Blog',
+//                    'priority' => 100,
+//                    'model'    => \App\Blog::class
+//			      ));
+//
+//			      $page->addPage(\App\Blog::class);
+//    	      }),
+//
+//            // or
+//
+//            [
+//                'title'       => 'News',
+//                'priority'    => 300,
+//                'accessLogic' => function ($page) {
+//                    return $page->isActive();
+//    		      },
+//                'pages'       => [
+//
+//                    // ...
+//
+//                ]
+//            ]
+//        ]
+//     ]
 ];
