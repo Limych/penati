@@ -9627,6 +9627,10 @@ a.text-dark:hover {
  * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
  */
 
+[v-cloak] {
+  display: none;
+}
+
 #navbar-login {
   border-bottom-left-radius: 0.5rem;
   position: absolute;
