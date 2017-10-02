@@ -178,12 +178,12 @@ class YandexFeedImporter
         }
 
         /** @var Offer $offer */
-        $offer = Offer::firstOrNew([
+        $offer = Offer::withoutGlobalScope('expire')->firstOrNew([
             'foreign_id' => $foreign_id,
         ], $objectData);
         $offer->agent()->associate($data['sales-agent']);
 
-        if (! empty($offer->updated_at) && $data['last-update-date']->gt($offer->updated_at)) {
+        if (! empty($offer->updated_at)) {
             unset($objectData['slug'], $objectData['title'], $objectData['badgeFPath']);
             $offer->update($objectData);
         }

@@ -36,6 +36,9 @@ return [
     [
         'title' => 'Extras',
         'priority' => 1020,
+        'accessLogic' => function () {
+            return env('APP_DEBUG');
+        },
         'pages' => [
             [
                 'title' => 'Models',

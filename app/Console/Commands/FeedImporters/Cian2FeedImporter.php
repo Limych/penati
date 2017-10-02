@@ -198,7 +198,7 @@ dd($data['Category']);
         $agent = $this->getAgent($data);
 
         /** @var Offer $offer */
-        $offer = Offer::firstOrNew([
+        $offer = Offer::withoutGlobalScope('expire')->firstOrNew([
             'foreign_id' => $foreign_id,
         ], $objectData);
         $offer->agent()->associate($agent);
