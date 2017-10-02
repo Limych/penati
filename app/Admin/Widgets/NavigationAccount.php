@@ -16,7 +16,7 @@ class NavigationAccount extends Widget
     public function toHtml()
     {
         return view(AdminTemplate::getViewPath('_partials.widgets.account'), [
-            'user' => auth()->user()
+            'user' => auth()->user(),
         ])->render();
     }
 

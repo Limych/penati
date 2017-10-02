@@ -1,5 +1,5 @@
 @hasSection('auth-mode')
-    {{ Meta::setMetaRobots('none') }}
+    @php(Meta::setMetaRobots('none'))
     @section('meta-robots')none @endsection
     @push('styles')
         <style>

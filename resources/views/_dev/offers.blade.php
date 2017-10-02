@@ -9,7 +9,7 @@
         @else
         <div class="card-columns">
             @foreach($models as $model)
-                @define $agent = $model->agent()->first()
+            @php($agent = $model->agent()->first())
             <div class="card">
                 <img class="card-img-top" src="{{ mapUrl($model->latitude, $model->longitude) }}" alt="Map">
                 <div class="card-body">

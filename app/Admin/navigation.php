@@ -23,7 +23,7 @@ use SleepingOwl\Admin\Navigation\Page;
 
 return [
     [
-        'title' => 'Dashboard',
+        'title' => __('sleeping_owl::lang.dashboard'),
         'icon'  => 'icon-speedometer',
         'url'   => route('admin.dashboard'),
         'priority' => 0,
@@ -31,7 +31,7 @@ return [
 
     [
         'title' => 'Information',
-        'icon'  => 'icon-folder',
+        'icon'  => 'icon-info',
         'url'   => route('admin.information'),
     ],
 

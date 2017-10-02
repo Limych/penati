@@ -34,8 +34,6 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     public function boot(Admin $admin)
     {
-    	//
-
         parent::boot($admin);
 
         $this->app->call([$this, 'registerViews']);
