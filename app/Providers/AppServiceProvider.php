@@ -9,32 +9,6 @@ use Penati\Offer;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-
-        /**
-         * Extend blade so we can define a variable
-         * <code>
-         * @define $variable = "whatever"
-         * </code>
-         */
-        \Blade::extend(function($value) {
-            return preg_replace('/\@define(.+)/', '<?php ${1}; ?>', $value);
-        });
-
-        /**
-         * Map application models to simple types
-         */
-        Relation::morphMap([
-            'offers' => Offer::class,
-        ]);
-    }
 
     /**
      * Register any application services.
@@ -46,6 +20,22 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
-        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+
+        /**
+         * Map application models to simple types
+         */
+        Relation::morphMap([
+            'offers' => Offer::class,
+        ]);
     }
 }

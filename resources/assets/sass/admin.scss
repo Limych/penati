@@ -6,10 +6,10 @@
 @import "app";
 
 // Import CoreUI styles
-@import "~coreui.io/Static_Full_Project_GULP/scss/core/core";
+@import "~@coreui/vue/Vue_Full_Project/scss/core/core";
 
 // Import CoreUI vendors styles
-@import "~coreui.io/Static_Full_Project_GULP/scss/vendors/vendors";
+@import "~@coreui/vue/Vue_Full_Project/scss/vendors/vendors";
 
 // Dashboard custom styles
 @import "admin-custom";

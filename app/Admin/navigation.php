@@ -19,8 +19,6 @@
 //
 // AdminSection::addMenuPage(\App\User::class)
 
-use SleepingOwl\Admin\Navigation\Page;
-
 return [
     [
         'title' => 'Dashboard',
@@ -42,12 +40,18 @@ return [
             [
                 'title' => 'Models',
                 'icon' => 'icon-wrench',
-                'url'   => '#',
+                'url'  => '#',
                 'pages' => [
-                    (new Page(\Penati\User::class))
-                        ->setIcon('icon-user'),
-                    (new Page(\Penati\Offer::class))
-                        ->setIcon('icon-home'),
+                    [
+                        'title' => 'Agents',
+                        'icon' => 'icon-user',
+                        'url'   => url('/_dev/agent'),
+                    ],
+                    [
+                        'title' => 'Offers',
+                        'icon' => 'icon-home',
+                        'url'   => url('/_dev/offer'),
+                    ],
                 ],
             ],
         ],

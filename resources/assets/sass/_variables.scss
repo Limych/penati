@@ -1,7 +1,10 @@
 
 $navbar-brand-logo: url('/../images/penati-logo.png');
+$navbar-brand-minimized-logo: $navbar-brand-logo;
+
 $sidebar-bg: transparentize(#343a40, 0.1);
 $breadcrumb-bg: transparentize(#e9ecef, 0.2);
+$footer-bg: transparentize(#f0f3f5, 0.2);
 
 // Override spacers: add spacer size 6
 $spacer: 1rem;

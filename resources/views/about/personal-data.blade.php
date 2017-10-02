@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('_layout.frontend')
 
 @section('title')Политика в отношении обработки персональных данных@endsection
 
