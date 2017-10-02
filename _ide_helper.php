@@ -12493,6 +12493,53 @@ namespace Silber\Bouncer {
  
 }
 
+namespace forxer\LaravelGravatar { 
+
+    class Facade {
+        
+        /**
+         * Return the Gravatar image based on the provided email address.
+         *
+         * @param string $sEmail The email to get the gravatar for.
+         * @param string $presetName The preset name to apply.
+         * @return \forxer\Gravatar\Image 
+         * @static 
+         */ 
+        public static function image($email, $presetName = null)
+        {
+            return \forxer\LaravelGravatar\Gravatar::image($email, $presetName);
+        }
+        
+        /**
+         * Alias for the "image" method.
+         *
+         * @param string $sEmail The email to get the gravatar for.
+         * @param string $presetName The preset name to apply.
+         * @return \forxer\Gravatar\Image 
+         * @static 
+         */ 
+        public static function avatar($email, $presetName = null)
+        {
+            return \forxer\LaravelGravatar\Gravatar::avatar($email, $presetName);
+        }
+        
+        /**
+         * Return the Gravatar profile URL based on the provided email address.
+         *
+         * @param string $sEmail The email to get the Gravatar profile for.
+         * @param string $sFormat The profile format to use.
+         * @return \forxer\Gravatar\Profile 
+         * @static 
+         */ 
+        public static function profile($sEmail, $sFormat = null)
+        {
+            return \forxer\LaravelGravatar\Gravatar::profile($sEmail, $sFormat);
+        }
+         
+    }
+ 
+}
+
 namespace Collective\Html { 
 
     class FormFacade {
@@ -13906,53 +13953,6 @@ namespace Collective\Html {
         public static function componentCall($method, $parameters)
         {
             return \Collective\Html\HtmlBuilder::componentCall($method, $parameters);
-        }
-         
-    }
- 
-}
-
-namespace forxer\LaravelGravatar { 
-
-    class Facade {
-        
-        /**
-         * Return the Gravatar image based on the provided email address.
-         *
-         * @param string $sEmail The email to get the gravatar for.
-         * @param string $presetName The preset name to apply.
-         * @return \forxer\Gravatar\Image 
-         * @static 
-         */ 
-        public static function image($email, $presetName = null)
-        {
-            return \forxer\LaravelGravatar\Gravatar::image($email, $presetName);
-        }
-        
-        /**
-         * Alias for the "image" method.
-         *
-         * @param string $sEmail The email to get the gravatar for.
-         * @param string $presetName The preset name to apply.
-         * @return \forxer\Gravatar\Image 
-         * @static 
-         */ 
-        public static function avatar($email, $presetName = null)
-        {
-            return \forxer\LaravelGravatar\Gravatar::avatar($email, $presetName);
-        }
-        
-        /**
-         * Return the Gravatar profile URL based on the provided email address.
-         *
-         * @param string $sEmail The email to get the Gravatar profile for.
-         * @param string $sFormat The profile format to use.
-         * @return \forxer\Gravatar\Profile 
-         * @static 
-         */ 
-        public static function profile($sEmail, $sFormat = null)
-        {
-            return \forxer\LaravelGravatar\Gravatar::profile($sEmail, $sFormat);
         }
          
     }
@@ -17852,11 +17852,11 @@ namespace  {
 
     class Bouncer extends \Silber\Bouncer\BouncerFacade {}
 
+    class Gravatar extends \forxer\LaravelGravatar\Facade {}
+
     class Form extends \Collective\Html\FormFacade {}
 
     class Html extends \Collective\Html\HtmlFacade {}
-
-    class Gravatar extends \forxer\LaravelGravatar\Facade {}
 
     class PackageManager extends \KodiCMS\Assets\Facades\PackageManager {}
 

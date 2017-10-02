@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5be968228d5f73ad8bb35635d6643ea6",
+    "content-hash": "554c1ba890d3a553746ef43e51a1e58f",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1630,11 +1630,16 @@
         {
             "name": "limych/sleepingowl-coreui",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Limych/sleepingowl-coreui.git",
+                "reference": "b7d8988beeb1db3df7f463abf5339dba13e2aaae"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/sleepingowl-coreui",
-                "reference": "6958510fa2648bb9e36ddd42e8b226912adc582d",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/Limych/sleepingowl-coreui/zipball/b7d8988beeb1db3df7f463abf5339dba13e2aaae",
+                "reference": "b7d8988beeb1db3df7f463abf5339dba13e2aaae",
+                "shasum": ""
             },
             "require": {
                 "laravelrus/sleepingowl": "4.*@dev",
@@ -1658,11 +1663,7 @@
                     "Limych\\SleepingOwlCoreUI\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1672,14 +1673,8 @@
                     "email": "andrey@khrolenok.ru"
                 }
             ],
-            "description": "CoreUI Dashboard Template for SleepingOwl Admin Laravel Framework",
-            "support": {
-                "issues": "https://github.com/Limych/sleepingowl-coreui/issues",
-                "source": "https://github.com/Limych/sleepingowl-coreui"
-            },
-            "transport-options": {
-                "symlink": true
-            }
+            "description": "CoreUI Dashboard Template for SleepingOwl Laravel Admin Panel",
+            "time": "2017-10-02T08:55:47+00:00"
         },
         {
             "name": "monolog/monolog",
