@@ -21,6 +21,3 @@ Homestead.json
 
 # Vagrant specific
 .vagrant/
-
-# PhpStorm specific
-.idea/
