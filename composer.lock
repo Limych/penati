@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5be968228d5f73ad8bb35635d6643ea6",
+    "content-hash": "95f523231ebd6b4293059c36675eeb2c",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1633,10 +1633,11 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/sleepingowl-coreui",
-                "reference": "6958510fa2648bb9e36ddd42e8b226912adc582d",
+                "reference": "b7d8988beeb1db3df7f463abf5339dba13e2aaae",
                 "shasum": null
             },
             "require": {
+                "forxer/laravel-gravatar": "^1.1",
                 "laravelrus/sleepingowl": "4.*@dev",
                 "php": ">=5.6.4"
             },
@@ -1672,7 +1673,7 @@
                     "email": "andrey@khrolenok.ru"
                 }
             ],
-            "description": "CoreUI Dashboard Template for SleepingOwl Admin Laravel Framework",
+            "description": "CoreUI Dashboard Template for SleepingOwl Laravel Admin Panel",
             "support": {
                 "issues": "https://github.com/Limych/sleepingowl-coreui/issues",
                 "source": "https://github.com/Limych/sleepingowl-coreui"

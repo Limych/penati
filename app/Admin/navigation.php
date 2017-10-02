@@ -19,6 +19,8 @@
 //
 // AdminSection::addMenuPage(\App\User::class)
 
+use SleepingOwl\Admin\Navigation\Page;
+
 return [
     [
         'title' => 'Dashboard',
@@ -34,7 +36,19 @@ return [
     ],
 
     [
-        'title' => 'Extras',
+        'title' => 'Permissions',
+        'icon' => 'icon-people',
+        'url' => '#',
+        'pages' => [
+            (new Page(\Penati\User::class))
+                ->setIcon('icon-user'),
+            (new Page(\Silber\Bouncer\Database\Role::class))
+                ->setIcon('icon-key'),
+        ],
+    ],
+
+    [
+        'title' => 'Debug',
         'priority' => 1020,
         'accessLogic' => function () {
             return env('APP_DEBUG');

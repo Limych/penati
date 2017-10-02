@@ -23,8 +23,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('import:feed', ['feed_url' => '=cfg'])
-                  ->twiceDaily();
+        $schedule->command('import:feed =cfg')
+            ->twiceDaily()
+            ->emailOutputTo(env('APP_ADMIN_EMAIL'), true);
     }
 
     /**

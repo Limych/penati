@@ -14634,6 +14634,6 @@ hr.transparent {
 }
 
 #account-menu {
-  margin-right: 0.75rem;
+  margin-right: 0.75rem !important;
 }
 

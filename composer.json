@@ -7,11 +7,19 @@
         "homepage" : "https://github.com/Limych"
     }],
     "minimum-stability" : "stable",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/sleepingowl-coreui/",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": ">=7.0",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
-        "forxer/laravel-gravatar": "^1.1",
         "laravel/framework": "~5.5",
         "laravel/homestead": "~6.1",
         "laravel/tinker": "~1.0",
