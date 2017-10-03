@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "95f523231ebd6b4293059c36675eeb2c",
+    "content-hash": "edc34d4220c6dbfec57faad9b5c3402d",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1473,12 +1473,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelRUS/SleepingOwlAdmin.git",
-                "reference": "35292cfb0bd70fb7f00823b5545ff2ddd9859696"
+                "reference": "b32b8b26d74240dd69208722e7b2386346436d48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelRUS/SleepingOwlAdmin/zipball/35292cfb0bd70fb7f00823b5545ff2ddd9859696",
-                "reference": "35292cfb0bd70fb7f00823b5545ff2ddd9859696",
+                "url": "https://api.github.com/repos/LaravelRUS/SleepingOwlAdmin/zipball/b32b8b26d74240dd69208722e7b2386346436d48",
+                "reference": "b32b8b26d74240dd69208722e7b2386346436d48",
                 "shasum": ""
             },
             "require": {
@@ -1490,7 +1490,7 @@
                 "kodicomponents/navigation": "0.*",
                 "kodicomponents/support": "0.*",
                 "laravel/framework": "~5.2",
-                "laravelcollective/html": "@dev",
+                "laravelcollective/html": "5.5.1",
                 "php": ">=5.6.4"
             },
             "require-dev": {
@@ -1542,7 +1542,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2017-09-25T18:51:54+00:00"
+            "time": "2017-10-03T04:37:49+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1629,11 +1629,11 @@
         },
         {
             "name": "limych/sleepingowl-coreui",
-            "version": "dev-master",
+            "version": "dev-develop",
             "dist": {
                 "type": "path",
                 "url": "./packages/sleepingowl-coreui",
-                "reference": "b7d8988beeb1db3df7f463abf5339dba13e2aaae",
+                "reference": "ddb3664f924f0baa6f7d0ab2f909ca29bb625663",
                 "shasum": null
             },
             "require": {

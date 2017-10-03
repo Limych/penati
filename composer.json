@@ -24,7 +24,7 @@
         "laravel/homestead": "~6.1",
         "laravel/tinker": "~1.0",
         "laravelrus/sleepingowl": "4.*@dev",
-        "limych/sleepingowl-coreui": "dev-master",
+        "limych/sleepingowl-coreui": "dev-develop",
         "roumen/sitemap": "^2.7",
         "silber/bouncer": "v1.0.0-beta.4"
     },

@@ -22,5 +22,8 @@
     "popper.js": "^1.12.5",
     "simple-line-icons": "^2.4.1",
     "typograf": "^6.3.1"
+  },
+  "dependencies": {
+    "@coreui/vue": "git+https://github.com/mrholek/CoreUI-Vue.git"
   }
 }
