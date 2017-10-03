@@ -14,7 +14,7 @@
         }
 
         if (arguments.length < 1 || speedFactor === null) {
-            speedFactor = 0.5;
+            speedFactor = 0.8;
         }
         if (arguments.length < 2 || outerHeight === null) {
             outerHeight = true;

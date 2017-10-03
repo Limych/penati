@@ -1633,7 +1633,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/sleepingowl-coreui",
-                "reference": "ddb3664f924f0baa6f7d0ab2f909ca29bb625663",
+                "reference": "eb9527c5a0921e17cc9ab897220d18f570cafce2",
                 "shasum": null
             },
             "require": {

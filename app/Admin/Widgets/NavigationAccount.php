@@ -3,6 +3,8 @@
 namespace Penati\Admin\Widgets;
 
 use AdminTemplate;
+use SleepingOwl\Admin\Navigation\Badge;
+use SleepingOwl\Admin\Navigation\Page;
 use SleepingOwl\Admin\Widgets\Widget;
 
 class NavigationAccount extends Widget
@@ -17,6 +19,31 @@ class NavigationAccount extends Widget
     {
         return view(AdminTemplate::getViewPath('_partials.widgets.account'), [
             'user' => auth()->user(),
+            'pages' => [
+                (new Page)->setIcon('fa fa-bell-o')->setUrl('#')->setTitle('Updates')
+                    ->setBadge(
+                        (new Badge(42))
+                            ->setHtmlAttribute('class', 'badge badge-info')
+                    ),
+                (new Page)->setIcon('fa fa-envelope-o')->setUrl('#')->setTitle('Messages')
+                    ->setBadge(
+                        (new Badge(64))
+                            ->setHtmlAttribute('class', 'badge badge-success')
+                    ),
+                (new Page)->setTitle('Settings')->setPages(function (Page $page) {
+                    $page->addPage(
+                        (new Page)->setIcon('fa fa-wrench')->setUrl('#')->setTitle('Settings')
+                    );
+                    $page->addPage(
+                        (new Page)->setIcon('fa fa-rub')->setUrl('#')->setTitle('Payments')
+                            ->setBadge(
+                                (new Badge(312))
+                                    ->setHtmlAttribute('class', 'badge badge-primary')
+                            )
+                    );
+                }),
+                (new Page)->setTitle('* * *'),
+            ],
         ])->render();
     }
 
