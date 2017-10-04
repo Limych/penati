@@ -3,9 +3,9 @@
 namespace Penati\Providers;
 
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Redirect;
 
 class RedirectAwayProvider extends ServiceProvider
 {
@@ -18,12 +18,12 @@ class RedirectAwayProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::get(static::ROUTE . '/{url}', function ($url) {
+        Route::get(static::ROUTE.'/{url}', function ($url) {
             return Redirect::away($url);
         })->where('url', '.+');
 
         Blade::directive('away', function ($url) {
-            return url(static::ROUTE . '/' . rawurlencode($url));
+            return url(static::ROUTE.'/'.rawurlencode($url));
         });
     }
 

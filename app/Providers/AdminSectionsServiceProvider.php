@@ -2,8 +2,8 @@
 
 namespace Penati\Providers;
 
-use Illuminate\Console\DetectsApplicationNamespace;
 use SleepingOwl\Admin\Admin;
+use Illuminate\Console\DetectsApplicationNamespace;
 use SleepingOwl\Admin\Contracts\Widgets\WidgetsRegistryInterface;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 

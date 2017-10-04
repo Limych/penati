@@ -1,13 +1,13 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>.
  */
 
 /**
  * Created by PhpStorm.
  * User: Limych
  * Date: 20.09.2017
- * Time: 23:05
+ * Time: 23:05.
  */
 
 namespace Penati\Console\Commands;
@@ -18,7 +18,6 @@ use Penati\Console\Commands\FeedImporters\FeedImporter;
 
 class ImportFeed extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -34,7 +33,7 @@ class ImportFeed extends Command
     protected $description = 'Import real estate offers from feeds to database';
 
     /**
-     * Available importer classes of real estate offer feeds
+     * Available importer classes of real estate offer feeds.
      *
      * @var array
      */
@@ -47,7 +46,7 @@ class ImportFeed extends Command
     {
         parent::__construct();
 
-        $dir = __DIR__ . '/FeedImporters';
+        $dir = __DIR__.'/FeedImporters';
         $files = @scandir($dir);
         if ($files) {
             foreach ($files as $file) {
@@ -57,7 +56,7 @@ class ImportFeed extends Command
                 ) {
                     $class = $matches[1];
                     preg_match("/\bnamespace\s+([^;\s]+)/", $res, $matches);
-                    $this->importers[] = $matches[1] . '\\' . $class;
+                    $this->importers[] = $matches[1].'\\'.$class;
                 }
             }
         }
@@ -88,15 +87,16 @@ class ImportFeed extends Command
         foreach ($feeds as $feed) {
             $reader = new \XMLReader();
             $reader->open($feed);
-            do {} while ($reader->read() && $reader->nodeType != \XMLReader::ELEMENT);
+            do {
+            } while ($reader->read() && $reader->nodeType != \XMLReader::ELEMENT);
 
             if ($reader->nodeType != \XMLReader::ELEMENT) {
-                $this->comment('There are empty feed ' . $feed);
+                $this->comment('There are empty feed '.$feed);
             } else {
                 foreach ($this->importers as $importer) {
                     $importer = $app->make($importer, ['context' => $this, 'feed' => $feed]);
                     if ($app->call([$importer, 'canImport'], ['context' => $this, 'reader' => $reader])) {
-                        $this->info('Importing feed ' . $feed);
+                        $this->info('Importing feed '.$feed);
                         try {
                             $app->call([$importer, 'import'], ['reader' => $reader, 'feed' => $feed, 'context' => $this]);
                         } catch (\Exception $ex) {
@@ -107,12 +107,11 @@ class ImportFeed extends Command
                         continue 2;
                     }
                 }
-                $this->error('There are no importer for feed ' . $feed);
+                $this->error('There are no importer for feed '.$feed);
             }
             $reader->close();
         }
 
         return 0;
     }
-
 }

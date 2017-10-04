@@ -1,22 +1,22 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>.
  */
 
 namespace Penati\Http\Sections;
 
-use AdminColumn;
-use AdminDisplay;
 use AdminForm;
-use AdminFormElement;
+use AdminColumn;
 use Penati\User;
-use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Contracts\Initializable;
+use AdminDisplay;
+use AdminFormElement;
 use SleepingOwl\Admin\Section;
+use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 
 /**
- * Class Users
+ * Class Users.
  *
  * @property \Penati\User $model
  *
@@ -41,14 +41,14 @@ class Users extends Section implements Initializable
      */
     public function initialize()
     {
-        app()->booted(function() {
+        app()->booted(function () {
             \AdminNavigation::getPages()->findById('access')->addPage(
 //            \AdminNavigation::addPage(
-                $this->makePage(0, function() {
+                $this->makePage(0, function () {
                     return User::count();
                 })
             );
-//dd(\AdminNavigation::getPages());
+            //dd(\AdminNavigation::getPages());
         });
 //
 //        $this->creating(function($config, \Illuminate\Database\Eloquent\Model $model) {

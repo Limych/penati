@@ -2,9 +2,9 @@
 
 namespace Penati\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Penati\Http\Sections\Users;
 use Penati\User;
+use Penati\Http\Sections\Users;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UsersSectionModelPolicy
 {
@@ -21,7 +21,7 @@ class UsersSectionModelPolicy
     public function before(User $user, $ability, Users $section, User $item = null)
     {
         if ($user->roles->has('admin')) {
-            if ($ability != 'display' && $ability != 'create' && !is_null($item) && $item->id < 2) {
+            if ($ability != 'display' && $ability != 'create' && ! is_null($item) && $item->id < 2) {
                 return false;
             }
 

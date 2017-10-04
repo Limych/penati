@@ -2,8 +2,8 @@
 
 namespace Penati\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Penati\User;
+use Illuminate\Http\Request;
 
 class AgentController extends Controller
 {

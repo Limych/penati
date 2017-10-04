@@ -1,13 +1,13 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>.
  */
 
 namespace Penati\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Model;
-use Penati\Offer;
 use Penati\User;
+use Penati\Offer;
+use Illuminate\Database\Eloquent\Model;
 
 class DevController extends Controller
 {
@@ -32,6 +32,7 @@ class DevController extends Controller
         $class = "Penati\\$model";
         /** @var Model[] $models */
         $models = $class::all();
+
         return view('_dev.model', compact('model', 'models'));
     }
 
@@ -43,6 +44,7 @@ class DevController extends Controller
     public function agents()
     {
         $models = User::whereIs('agent')->get();
+
         return view('_dev.agents', compact('models'));
     }
 
@@ -54,6 +56,7 @@ class DevController extends Controller
     public function offers()
     {
         $models = Offer::all();
+
         return view('_dev.offers', compact('models'));
     }
 }

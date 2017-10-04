@@ -1,14 +1,14 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>.
  */
 
 namespace Penati\ContentBlocks;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ContentBlock extends Model
 {
@@ -49,11 +49,11 @@ class ContentBlock extends Model
         parent::__construct($attributes);
 
         if (empty(static::$modelMap)) {
-            $ereg =  '/(.+)' . preg_quote(basename(__FILE__), '/') . '/';
+            $ereg = '/(.+)'.preg_quote(basename(__FILE__), '/').'/';
             foreach (scandir(__DIR__) as $fname) {
-                if (is_file(__DIR__ . '/' . $fname) && preg_match($ereg, $fname, $matches)) {
+                if (is_file(__DIR__.'/'.$fname) && preg_match($ereg, $fname, $matches)) {
                     static::$modelMap[Str::snake($matches[1])] =
-                        __NAMESPACE__ . '\\' . $matches[1] . class_basename(__CLASS__);
+                        __NAMESPACE__.'\\'.$matches[1].class_basename(__CLASS__);
                 }
             }
         }
@@ -124,6 +124,7 @@ class ContentBlock extends Model
         $content = $this->content;
 
         $view = view('block.basic', compact('title', 'summary', 'content'));
+
         return $view->render();
     }
 }

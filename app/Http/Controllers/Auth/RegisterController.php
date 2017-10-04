@@ -2,11 +2,10 @@
 
 namespace Penati\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Validator;
-use Penati\Http\Controllers\Controller;
-use Penati\Role;
 use Penati\User;
+use Penati\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
