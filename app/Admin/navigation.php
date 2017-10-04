@@ -36,28 +36,29 @@ return [
     ],
 
     [
-        'title' => 'Permissions',
-        'icon' => 'icon-people',
-        'url' => '#',
+        'title' => 'System',
+        'priority' => 900,
         'pages' => [
-            (new Page(\Penati\User::class))
-                ->setIcon('icon-user'),
-            (new Page(\Silber\Bouncer\Database\Role::class))
-                ->setIcon('icon-key'),
-        ],
-    ],
+            [
+                'title' => 'Access',
+                'id' => 'access',
+                'icon' => 'icon-people',
+                'url' => '#',
+                'pages' => [
+        //            (new Page(\Penati\User::class)),
+                    (new Page(\Silber\Bouncer\Database\Role::class))
+                        ->setIcon('icon-key'),
+                ],
+            ],
 
-    [
-        'title' => 'Debug',
-        'priority' => 1020,
-        'accessLogic' => function () {
-            return env('APP_DEBUG');
-        },
-        'pages' => [
             [
                 'title' => 'Models',
                 'icon' => 'icon-wrench',
+                'priority' => 1020,
                 'url'  => '#',
+                'accessLogic' => function () {
+                    return env('APP_DEBUG');
+                },
                 'pages' => [
                     [
                         'title' => 'Agents',
