@@ -1,13 +1,13 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>.
  */
 
 namespace Penati\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Console\DetectsApplicationNamespace;
 
 class MakeUser extends Command
 {
@@ -31,16 +31,16 @@ class MakeUser extends Command
     protected $description = 'Create a new user based on the email supplied';
 
     /**
-     * the user class definition
+     * the user class definition.
      */
-    var $userClass;
+    public $userClass;
 
     /**
      * Create a new command instance.
      */
     public function __construct()
     {
-        $this->userClass = '\\' . $this->getAppNamespace() . 'User';
+        $this->userClass = '\\'.$this->getAppNamespace().'User';
         $this->signature = str_replace('\App\User', $this->userClass, $this->signature);
 
         parent::__construct();
@@ -60,15 +60,16 @@ class MakeUser extends Command
         $userDb = new $userClass;
 
         // Checking for the user existence
-        if($userDb::where('email', $emailAddress)->count() > 0) {
+        if ($userDb::where('email', $emailAddress)->count() > 0) {
             $this->error('Email address already exists');
+
             return;
         }
 
         // Name of the User (default to use Email Address)
         $name = $this->option('name') ? $this->option('name') : $emailAddress;
         // Prompt for password, unless specified, or generate random password when no interaction mode
-        $password = $this->option('password') ?: ( $this->option('no-interaction')
+        $password = $this->option('password') ?: ($this->option('no-interaction')
             ? str_random(8)
             : $this->askOption(
                 'password',
@@ -100,7 +101,7 @@ class MakeUser extends Command
     }
 
     /**
-     * Validates the user input
+     * Validates the user input.
      *
      * @param string $attribute
      * @param string $validation
@@ -111,9 +112,9 @@ class MakeUser extends Command
     protected function validateInput(string $attribute, string $validation, $value)
     {
         $validator = Validator::make([
-            $attribute => $value
+            $attribute => $value,
         ], [
-            $attribute => $validation
+            $attribute => $validation,
         ]);
 
         if ($validator->fails()) {

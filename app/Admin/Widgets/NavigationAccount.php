@@ -3,13 +3,12 @@
 namespace Penati\Admin\Widgets;
 
 use AdminTemplate;
-use SleepingOwl\Admin\Navigation\Badge;
-use SleepingOwl\Admin\Navigation\Page;
 use SleepingOwl\Admin\Widgets\Widget;
+use SleepingOwl\Admin\Navigation\Page;
+use SleepingOwl\Admin\Navigation\Badge;
 
 class NavigationAccount extends Widget
 {
-
     /**
      * Get content as a string of HTML.
      *

@@ -1,32 +1,31 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>.
  */
 
 /**
  * Created by PhpStorm.
  * User: Limych
  * Date: 21.09.2017
- * Time: 0:00
+ * Time: 0:00.
  */
 
 namespace Penati\Console\Commands\FeedImporters;
 
+use Penati\User;
+use Penati\Offer;
+use Ramsey\Uuid\Uuid;
+use Penati\ContentBlocks\PhotosContentBlock;
 use Illuminate\Contracts\Foundation\Application;
 use Penati\ContentBlocks\DescriptionContentBlock;
-use Penati\ContentBlocks\PhotosContentBlock;
-use Penati\Offer;
-use Penati\User;
-use Ramsey\Uuid\Uuid;
 
 class Cian2FeedImporter
 {
-
     /**
-     * Check for ability to import real estate offers feed
+     * Check for ability to import real estate offers feed.
      *
      * @param \XMLReader $reader
-     * @return boolean
+     * @return bool
      */
     public function canImport(\XMLReader $reader)
     {
@@ -36,22 +35,26 @@ class Cian2FeedImporter
         $reader2 = new \XMLReader();
         $reader2->XML($reader->readOuterXml());
         $reader2->read();
-        do {} while ($reader2->read() && $reader2->nodeType != \XMLReader::ELEMENT);
+        do {
+        } while ($reader2->read() && $reader2->nodeType != \XMLReader::ELEMENT);
         if ($reader2->localName !== 'feed_version') {
             $reader2->close();
+
             return false;
         }
         $reader2->read();
         if (! $reader2->hasValue || ($reader2->value != 2)) {
             $reader2->close();
+
             return false;
         }
         $reader2->close();
+
         return true;
     }
 
     /**
-     * Import real estate offers feed to database
+     * Import real estate offers feed to database.
      *
      * @param Application $app
      * @param string $feed
@@ -74,7 +77,7 @@ class Cian2FeedImporter
     }
 
     /**
-     * Make human readable price
+     * Make human readable price.
      *
      * @param $data
      * @return string
@@ -86,11 +89,12 @@ class Cian2FeedImporter
         }
         $fmt = new \NumberFormatter('ru-RU', \NumberFormatter::CURRENCY);
         $fmt->setAttribute(\NumberFormatter::MAX_FRACTION_DIGITS, 0);
+
         return $fmt->formatCurrency($data['Price'], $data['Currency']);
     }
 
     /**
-     * Read offer from feed and add it to database
+     * Read offer from feed and add it to database.
      *
      * @param $feed_url
      * @param \XMLReader $xml
@@ -112,9 +116,9 @@ class Cian2FeedImporter
                     case 'ExternalId':
                         $child = '';
                         while ($xml->read() && $xml->hasValue) {
-                            $child = $child . $xml->value;
+                            $child = $child.$xml->value;
                         }
-                        $foreign_id = intval($child) . '@' . parse_url($feed_url, PHP_URL_HOST);
+                        $foreign_id = intval($child).'@'.parse_url($feed_url, PHP_URL_HOST);
                         break;
                     case 'Category':
                     case 'Description':
@@ -127,7 +131,7 @@ class Cian2FeedImporter
                     case 'FloorNumber':
                         $child = '';
                         while ($xml->read() && $xml->hasValue) {
-                            $child = $child . $xml->value;
+                            $child = $child.$xml->value;
                         }
                         $data[$key] = $child;
                         break;
@@ -158,35 +162,36 @@ class Cian2FeedImporter
             case 'houseRent':
             case 'cottageSale':
             case 'cottageRent':
-                $cover = ! $isRent ? "Продаётся дом" : "Дом в аренду";
+                $cover = ! $isRent ? 'Продаётся дом' : 'Дом в аренду';
                 if (! empty($data['SettlementName'])) {
                     $cover .= " в посёлке \"${data['SettlementName']}\"";
                 }
-                $title = "Дом площадью ${data['TotalArea']} м² с ${data['BedroomsCount']} спальн" .
+                $title = "Дом площадью ${data['TotalArea']} м² с ${data['BedroomsCount']} спальн".
                     static::plural(['ей', 'ями'], $data['BedroomsCount']);
                 break;
             case 'flatSale':
             case 'flatRent':
                 if (! empty($data['IsPenthouse'])) {
-                    $cover = !$isRent ? "Продаётся пентхаус" : "Пентхаус в аренду";
+                    $cover = ! $isRent ? 'Продаётся пентхаус' : 'Пентхаус в аренду';
                     $title = "${data['FlatRoomsCount']}-комнатный пентхаус, ${data['TotalArea']} м²";
                 } elseif (! empty($data['IsApartments'])) {
-                    $cover = !$isRent ? "Продаются апартаменты" : "Квартира в аренду";
-                    $title = "${data['FlatRoomsCount']}-комнатная квартира, ${data['TotalArea']} м²." .
+                    $cover = ! $isRent ? 'Продаются апартаменты' : 'Квартира в аренду';
+                    $title = "${data['FlatRoomsCount']}-комнатная квартира, ${data['TotalArea']} м².".
                         " ${data['FloorNumber']} этаж";
                 } else {
-                    $cover = !$isRent ? "Продаётся квартира" : "Квартира в аренду";
-                    $title = "${data['FlatRoomsCount']}-комнатная квартира, ${data['TotalArea']} м²." .
+                    $cover = ! $isRent ? 'Продаётся квартира' : 'Квартира в аренду';
+                    $title = "${data['FlatRoomsCount']}-комнатная квартира, ${data['TotalArea']} м².".
                         " ${data['FloorNumber']} этаж";
                 }
                 break;
             default:
 dd($data['Category']);
+
                 return;
         }
         $objectData = [
             'title' => $cover,
-            'price' => static::normalizePrice($data['BargainTerms']) . ($isRent ? '/мес.' : ''),
+            'price' => static::normalizePrice($data['BargainTerms']).($isRent ? '/мес.' : ''),
             'latitude' => $data['Coordinates']['Lat'],
             'longitude' => $data['Coordinates']['Lng'],
             'address' => $data['Address'],
@@ -237,6 +242,7 @@ dd($data['Category']);
                 // Update existing block
                 $block->update($attributes);
                 $block->touch();
+
                 return;
             }
         }
@@ -257,7 +263,7 @@ dd($data['Category']);
                 $key = $xml->localName;
                 $child = '';
                 while ($xml->read() && $xml->hasValue) {
-                    $child = $child . $xml->value;
+                    $child = $child.$xml->value;
                 }
                 if (empty($data[$key])) {
                     $data[$key] = $child;
@@ -266,7 +272,7 @@ dd($data['Category']);
                 } else {
                     $data[$key] = [
                         $data[$key],
-                        $child
+                        $child,
                     ];
                 }
             }
@@ -284,12 +290,13 @@ dd($data['Category']);
         } else {
             $phone = trim(preg_replace("/[^\d+().-]+/", '-', $phone), '-');
         }
-        return 'tel:' . $phone;
+
+        return 'tel:'.$phone;
     }
 
     protected function getAgent($data)
     {
-        $agent_name = trim($data['SubAgent']['FirstName'] . ' ' . $data['SubAgent']['LastName']);
+        $agent_name = trim($data['SubAgent']['FirstName'].' '.$data['SubAgent']['LastName']);
         $agent = User::whereName($agent_name)->first();
         if (empty($agent)) {
             $contacts = [];
@@ -304,7 +311,7 @@ dd($data['Category']);
                 $contacts[] = static::phone2Uri($phone);
             }
             if (! empty($data['Email'])) {
-                $contacts[] = 'mailto:' . $data['Email'];
+                $contacts[] = 'mailto:'.$data['Email'];
             }
 
             $agent = User::where('contactUris', 'LIKE', "%$contacts[0]%")->first();
@@ -331,9 +338,9 @@ dd($data['Category']);
         while ($xml->nodeType != \XMLReader::END_ELEMENT) {
             if ($xml->nodeType != \XMLReader::ELEMENT) {
                 // No-op: skip any insignificant whitespace, comments, etc.
-            } elseif($xml->localName == 'PhoneSchema') {
+            } elseif ($xml->localName == 'PhoneSchema') {
                 $res = $this->readAssoc($xml);
-                $phones[] = $res['CountryCode'] . $res['Number'];
+                $phones[] = $res['CountryCode'].$res['Number'];
             }
             $xml->read(); // Advance the reader
         }
@@ -349,7 +356,7 @@ dd($data['Category']);
         while ($xml->nodeType != \XMLReader::END_ELEMENT) {
             if ($xml->nodeType != \XMLReader::ELEMENT) {
                 // No-op: skip any insignificant whitespace, comments, etc.
-            } elseif($xml->localName == 'PhotoSchema') {
+            } elseif ($xml->localName == 'PhotoSchema') {
                 $res = $this->readAssoc($xml);
                 if ($res['IsDefault']) {
                     array_unshift($photos, $res['FullUrl']);
@@ -364,10 +371,10 @@ dd($data['Category']);
     }
 
     /**
-     * Detect & return the ending for the plural word
+     * Detect & return the ending for the plural word.
      *
      * @param  array $endings  nouns or endings words for (1, 4, 5)
-     * @param  integer $number   number rows to ending determine
+     * @param  int $number   number rows to ending determine
      *
      * @return string
      *
@@ -382,6 +389,7 @@ dd($data['Category']);
         }
         $cases = [2, 0, 1, 1, 1, 2];
         $n = $number;
-        return sprintf($endings[ ($n%100>4 && $n%100<20) ? 2 : $cases[min($n%10, 5)] ], $n);
+
+        return sprintf($endings[($n % 100 > 4 && $n % 100 < 20) ? 2 : $cases[min($n % 10, 5)]], $n);
     }
 }

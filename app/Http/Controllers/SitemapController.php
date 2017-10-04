@@ -3,13 +3,12 @@
 namespace Penati\Http\Controllers;
 
 use App;
-use Illuminate\Support\Facades\View;
-use Penati\Offer;
 use URL;
+use Penati\Offer;
+use Illuminate\Support\Facades\View;
 
 class SitemapController extends Controller
 {
-
     /**
      * Display a sitemap listing.
      *
@@ -27,8 +26,7 @@ class SitemapController extends Controller
 
             // add all offers to the sitemap
             $offers = Offer::orderBy('created_at', 'desc')->get();
-            foreach ($offers as $offer)
-            {
+            foreach ($offers as $offer) {
                 $agent = $offer->agent()->first();
                 $url = URL::route('offers.show', [
                     'agent' => $agent->slug,

@@ -3,21 +3,19 @@
 namespace Penati;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Penati\ContentBlocks\HasContentBlocks;
-use Penati\Scopes\OfferExpireScope;
 
 class Offer extends Model
 {
-
     use HasSlug;
     use HasContentBlocks;
 
     protected $table = 'offers';
     public $timestamps = true;
 
-    protected $fillable = array('foreign_id', 'slug', 'title', 'badgeFPath', 'price', 'address', 'latitude', 'longitude');
+    protected $fillable = ['foreign_id', 'slug', 'title', 'badgeFPath', 'price', 'address', 'latitude', 'longitude'];
 
     /**
      * The "booting" method of the model.

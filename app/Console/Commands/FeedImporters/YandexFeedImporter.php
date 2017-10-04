@@ -1,36 +1,35 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey "Limych" Khrolenok <andrey@khrolenok.ru>.
  */
 
 /**
  * Created by PhpStorm.
  * User: Limych
  * Date: 21.09.2017
- * Time: 0:00
+ * Time: 0:00.
  */
 
 namespace Penati\Console\Commands\FeedImporters;
 
-use Carbon\Carbon;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\Str;
-use Penati\ContentBlocks\DescriptionContentBlock;
-use Penati\ContentBlocks\PhotosContentBlock;
-use Penati\Offer;
 use Penati\User;
+use Penati\Offer;
+use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
+use Penati\ContentBlocks\PhotosContentBlock;
+use Illuminate\Contracts\Foundation\Application;
+use Penati\ContentBlocks\DescriptionContentBlock;
 
 class YandexFeedImporter
 {
-
     const YANDEX_NS = 'http://webmaster.yandex.ru/schemas/feed/realty/2010-06';
 
     /**
-     * Check for ability to import real estate offers feed
+     * Check for ability to import real estate offers feed.
      *
      * @param \XMLReader $reader
-     * @return boolean
+     * @return bool
      */
     public function canImport(\XMLReader $reader)
     {
@@ -40,7 +39,7 @@ class YandexFeedImporter
     }
 
     /**
-     * Import real estate offers feed to database
+     * Import real estate offers feed to database.
      *
      * @param Application $app
      * @param string $feed
@@ -65,7 +64,7 @@ class YandexFeedImporter
     }
 
     /**
-     * Make human readable price
+     * Make human readable price.
      *
      * @param $data
      * @return string
@@ -74,11 +73,12 @@ class YandexFeedImporter
     {
         $fmt = new \NumberFormatter('ru-RU', \NumberFormatter::CURRENCY);
         $fmt->setAttribute(\NumberFormatter::MAX_FRACTION_DIGITS, 0);
+
         return $fmt->formatCurrency($data['value'], $data['currency']);
     }
 
     /**
-     * Read offer from feed and add it to database
+     * Read offer from feed and add it to database.
      *
      * @param $feed_url
      * @param \XMLReader $xml
@@ -91,7 +91,7 @@ class YandexFeedImporter
             $moreAttributes = $xml->moveToFirstAttribute();
             while ($moreAttributes) {
                 if ($xml->localName == 'internal-id') {
-                    $foreign_id = intval($xml->value) . '@' . parse_url($feed_url, PHP_URL_HOST);
+                    $foreign_id = intval($xml->value).'@'.parse_url($feed_url, PHP_URL_HOST);
                 }
                 $moreAttributes = $xml->moveToNextAttribute();
             }
@@ -110,14 +110,14 @@ class YandexFeedImporter
                     case 'rooms':
                         $child = '';
                         while ($xml->read() && $xml->hasValue) {
-                            $child = $child . $xml->value;
+                            $child = $child.$xml->value;
                         }
                         $data[$key] = $child;
                         break;
                     case 'image':
                         $child = '';
                         while ($xml->read() && $xml->hasValue) {
-                            $child = $child . $xml->value;
+                            $child = $child.$xml->value;
                         }
                         if (empty($data['images'])) {
                             $data['images'] = [];
@@ -127,13 +127,13 @@ class YandexFeedImporter
                     case 'last-update-date':
                         $child = '';
                         while ($xml->read() && $xml->hasValue) {
-                            $child = $child . $xml->value;
+                            $child = $child.$xml->value;
                         }
                         $data[$key] = Carbon::createFromFormat(Carbon::ATOM, $child);
                         break;
                     case 'area':
                         $child = $this->readAssoc($xml);
-                        $data[$key] = $child['value'] . ' м²';
+                        $data[$key] = $child['value'].' м²';
                         break;
                     case 'price':
                         $data[$key] = self::normalizePrice($this->readAssoc($xml));
@@ -167,7 +167,7 @@ class YandexFeedImporter
         }
 
         $objectData = [
-            'title' => Str::ucfirst($data['category']) . ' ' . $data['area'],
+            'title' => Str::ucfirst($data['category']).' '.$data['area'],
             'price' => $data['price'],
             'latitude' => $data['location']['latitude'],
             'longitude' => $data['location']['longitude'],
@@ -191,7 +191,7 @@ class YandexFeedImporter
 
         if (! empty($data['description'])) {
             static::updateBlock($offer, DescriptionContentBlock::class, [
-                    'title' => Str::ucfirst($data['category']) . ' ' . $data['area'],
+                    'title' => Str::ucfirst($data['category']).' '.$data['area'],
                     'summary' => $data['location']['address'],
                     'content' => $data['description'],
             ]);
@@ -217,6 +217,7 @@ class YandexFeedImporter
                 // Update existing block
                 $block->update($attributes);
                 $block->touch();
+
                 return;
             }
         }
@@ -237,7 +238,7 @@ class YandexFeedImporter
                 $key = $xml->localName;
                 $child = '';
                 while ($xml->read() && $xml->hasValue) {
-                    $child = $child . $xml->value;
+                    $child = $child.$xml->value;
                 }
                 if (empty($data[$key])) {
                     $data[$key] = $child;
@@ -246,7 +247,7 @@ class YandexFeedImporter
                 } else {
                     $data[$key] = [
                         $data[$key],
-                        $child
+                        $child,
                     ];
                 }
             }
@@ -264,7 +265,8 @@ class YandexFeedImporter
         } else {
             $phone = trim(preg_replace("/[^\d+().-]+/", '-', $phone), '-');
         }
-        return 'tel:' . $phone;
+
+        return 'tel:'.$phone;
     }
 
     protected function readAgent(\XMLReader $xml)
@@ -274,12 +276,12 @@ class YandexFeedImporter
         $agent = User::whereName($data['name'])->first();
         if (empty($agent)) {
             $contacts = [];
-            $tmp = is_array($data['phone']) ? $data['phone'] : [ $data['phone'] ];
+            $tmp = is_array($data['phone']) ? $data['phone'] : [$data['phone']];
             foreach ($tmp as $phone) {
                 $contacts[] = static::phone2Uri($phone);
             }
             if (! empty($data['email'])) {
-                $contacts[] = 'mailto:' . $data['email'];
+                $contacts[] = 'mailto:'.$data['email'];
             }
 
             $agent = User::where('contactUris', 'LIKE', "%$contacts[0]%")->first();

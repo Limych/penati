@@ -1,4 +1,5 @@
 <?php
+
 namespace Deployer;
 
 require 'vendor/deployer/deployer/recipe/laravel.php';
@@ -33,9 +34,10 @@ host('penati-reg')
     ->stage('production')
     ->set('deploy_path', '~/{{application}}')
     ->set('bin/php', function () {
-        $php = run("cat ~/php-bin/php");
+        $php = run('cat ~/php-bin/php');
         $php = preg_replace('/^\#\!/', '', $php);
         $php = preg_replace('/-cgi$/', '', $php);
+
         return $php;
     })
     ->set('writable_mode', 'chmod');
@@ -58,4 +60,3 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 before('deploy:symlink', 'artisan:migrate');
-
