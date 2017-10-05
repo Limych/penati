@@ -12,7 +12,7 @@ use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Section;
 
 /**
- * Class Offers
+ * Class Offers.
  *
  * @property \Penati\Offer $model
  *
