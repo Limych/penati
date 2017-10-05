@@ -30,12 +30,6 @@ return [
     ],
 
     [
-        'title' => 'Information',
-        'icon'  => 'icon-info',
-        'url'   => route('admin.information'),
-    ],
-
-    [
         'title' => 'System',
         'priority' => 900,
         'pages' => [

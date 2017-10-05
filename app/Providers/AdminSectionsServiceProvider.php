@@ -2,8 +2,8 @@
 
 namespace Penati\Providers;
 
-use SleepingOwl\Admin\Admin;
 use Illuminate\Console\DetectsApplicationNamespace;
+use SleepingOwl\Admin\Admin;
 use SleepingOwl\Admin\Contracts\Widgets\WidgetsRegistryInterface;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 
@@ -24,7 +24,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
-        \Penati\User::class => 'Penati\Http\Sections\Users',
+        \Penati\User::class => \Penati\Http\Sections\Users::class,
+        \Penati\Offer::class => \Penati\Http\Sections\Offers::class,
     ];
 
     /**

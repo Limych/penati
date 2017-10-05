@@ -5,15 +5,16 @@
 
 namespace Penati\Http\Sections;
 
-use AdminForm;
 use AdminColumn;
-use Penati\User;
 use AdminDisplay;
+use AdminForm;
 use AdminFormElement;
-use SleepingOwl\Admin\Section;
-use SleepingOwl\Admin\Contracts\Initializable;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use Limych\SleepingOwlCoreUI\Navigation\Badge;
+use Penati\User;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
+use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Section;
 
 /**
  * Class Users.
@@ -25,51 +26,21 @@ use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 class Users extends Section implements Initializable
 {
     /**
-     * @see http://sleepingowladmin.ru/docs/model_configuration#ограничение-прав-доступа
-     *
-     * @var bool
-     */
-    protected $checkAccess = true;
-
-    /**
-     * @var string
-     */
-    protected $title = 'Users';
-
-    /**
      * Initialize class.
      */
     public function initialize()
     {
+        $this->title = trans('http.sections.users');
+        $this->setIcon('icon-user');
+
+        $this->enableAccessCheck();
+
         app()->booted(function () {
             \AdminNavigation::getPages()->findById('access')->addPage(
 //            \AdminNavigation::addPage(
-                $this->makePage(0, function () {
-                    return User::count();
-                })
+                $this->makePage(0, new Badge(User::count()))
             );
-            //dd(\AdminNavigation::getPages());
         });
-//
-//        $this->creating(function($config, \Illuminate\Database\Eloquent\Model $model) {
-//            ...
-//        });
-    }
-
-    /**
-     * @return string
-     */
-    public function getIcon()
-    {
-        return 'icon-user';
-    }
-
-    /**
-     * @return string|\Symfony\Component\Translation\TranslatorInterface
-     */
-    public function getTitle()
-    {
-        return trans('core.title.users');
     }
 
     /**
@@ -78,12 +49,11 @@ class Users extends Section implements Initializable
     public function onDisplay()
     {
         return AdminDisplay::table()
-//            ->with('roles')
             ->setHtmlAttribute('class', 'table-primary')
             ->setColumns([
-                AdminColumn::link('name', 'Username'),
-                AdminColumn::email('email', 'Email')->setWidth('150px'),
-//                AdminColumn::lists('roles.label', 'Roles')->setWidth('200px'),
+                AdminColumn::link('name', trans('http.display.username')),
+                AdminColumn::email('email', trans('http.display.email'))->setView('column.account_email')->setWidth('150px'),
+                AdminColumn::lists('roles.name', trans('http.display.roles'))->setWidth('200px'),
             ])->paginate(20);
     }
 
@@ -98,8 +68,8 @@ class Users extends Section implements Initializable
             AdminColumn::image('avatar')->setWidth('150px'),
             AdminFormElement::upload('avatar', 'Avatar')->addValidationRule('image'),
             AdminFormElement::text('name', 'Username')->required(),
-            AdminFormElement::password('password', 'Password')->required()->addValidationRule('min:6'),
             AdminFormElement::text('email', 'E-mail')->required()->addValidationRule('email'),
+            AdminFormElement::password('password', 'Password')->required()->addValidationRule('min:6'),
 //            AdminFormElement::multiselect('roles', 'Roles', Role::class)->setDisplay('name'),
         ]);
     }

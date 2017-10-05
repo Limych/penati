@@ -1,3 +1,8 @@
+{{--@php--}}
+    {{--if (empty($errors)){--}}
+        {{--$errors = new \Illuminate\Support\Collection();--}}
+    {{--}--}}
+{{--@endphp--}}
 <h1>Login</h1>
 <p class="text-muted">Sign In to your account</p>
 <form role="form" method="POST" action="{{ url('/login') }}">

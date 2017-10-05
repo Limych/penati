@@ -2,10 +2,11 @@
 
 namespace Penati;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable
 {
@@ -38,6 +39,10 @@ class User extends Authenticatable
     {
         parent::boot();
 
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('name');
+        });
+
         self::creating(function (self $model) {
             if (empty($model->displayName)) {
                 $model->displayName = $model->name;
@@ -48,7 +53,9 @@ class User extends Authenticatable
         });
 
         self::created(function (self $model) {
-            \Bouncer::assign(($model::count() == 1) ? 'admin' : 'client')->to($model);
+            if ($model::count() == 1) {
+                \Bouncer::assign('admin')->to($model);
+            }
         });
     }
 
