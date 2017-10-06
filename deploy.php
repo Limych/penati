@@ -27,6 +27,8 @@ add('writable_dirs', []);
 // Default stage
 set('default_stage', 'production');
 
+set('keep_releases', 7);
+
 // Hosts
 
 host('penati-reg')
