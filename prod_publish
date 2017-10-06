@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+#if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+#    echo -e "\e[31m\e[1mGit is dirty. \e[0mPlease commit changes first."
+#    exit 1
+#fi
+
+set -e
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+version=$(echo "$branch" | sed 's#.*/##g')
+
+rm -Rf resources/assets tests .editorconfig .phpstorm.meta.php .styleci.yml _ide* after.sh deploy* install*
+rm -Rf package* phpunit.xml prod_* server.php Vagrantfile webpack.mix.js
+
+git commit -a -m "Clean develop assets"
+
+git checkout master
+git merge --no-ff ${branch}
+git tag -a ${version}
+git branch -d ${branch}
