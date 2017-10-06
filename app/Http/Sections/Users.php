@@ -38,7 +38,13 @@ class Users extends Section implements Initializable
         app()->booted(function () {
             \AdminNavigation::getPages()->findById('access')->addPage(
 //            \AdminNavigation::addPage(
-                $this->makePage(0, new Badge(User::count()))
+                $this->makePage(0, new Badge(function () {
+                    try {
+                        return User::count();
+                    } catch (\Exception $ex) {
+                        return 0;
+                    }
+                }))
             );
         });
     }

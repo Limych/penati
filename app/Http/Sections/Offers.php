@@ -30,7 +30,13 @@ class Offers extends Section implements Initializable
 
         app()->booted(function () {
             \AdminNavigation::addPage(
-                $this->makePage(100, new Badge(Offer::count()))
+                $this->makePage(100, new Badge(function () {
+                    try {
+                        return Offer::count();
+                    } catch (\Exception $ex) {
+                        return 0;
+                    }
+                }))
             );
         });
     }

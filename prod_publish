@@ -7,13 +7,15 @@
 
 set -e
 
-branch=$(git rev-parse --abbrev-ref HEAD)
-version=$(echo "$branch" | sed 's#.*/##g')
+phpunit
 
 rm -Rf resources/assets tests .editorconfig .phpstorm.meta.php .styleci.yml _ide* after.sh deploy* install*
-rm -Rf package* phpunit.xml prod_* server.php Vagrantfile webpack.mix.js
+rm -Rf phpunit.xml prod_* server.php Vagrantfile webpack.mix.js
 
 git commit -a -m "Clean develop assets"
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+version=$(echo "$branch" | sed 's#.*/##g')
 
 git checkout master
 git merge --no-ff ${branch}
