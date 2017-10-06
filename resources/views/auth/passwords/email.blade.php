@@ -1,6 +1,6 @@
 @extends('_layout.app')
 
-@section('auth-mode')true @endsection
+@php($auth_mode = true)
 
 @section('body-classes')auth flex-row align-items-center @endsection
 

@@ -2,12 +2,14 @@
 
 namespace Penati\Providers;
 
+use Illuminate\Console\DetectsApplicationNamespace;
 use SleepingOwl\Admin\Admin;
 use SleepingOwl\Admin\Contracts\Widgets\WidgetsRegistryInterface;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 
 class AdminSectionsServiceProvider extends ServiceProvider
 {
+    use DetectsApplicationNamespace;
 
     /**
      * @var array
@@ -22,8 +24,22 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
-        //\Penati\User::class => 'Penati\Http\Sections\Users',
+        \Penati\User::class => \Penati\Http\Sections\Users::class,
+        \Penati\Offer::class => \Penati\Http\Sections\Offers::class,
     ];
+
+    /**
+     * @param null $namespace
+     * @return array
+     */
+    public function policies($namespace = null)
+    {
+        if (is_null($namespace)) {
+            $namespace = config('sleeping_owl.policies_namespace', $this->getAppNamespace().'Policies\\');
+        }
+
+        return parent::policies($namespace);
+    }
 
     /**
      * Register sections.
@@ -34,6 +50,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     public function boot(Admin $admin)
     {
+        $this->registerPolicies();
+
         parent::boot($admin);
 
         $this->app->call([$this, 'registerViews']);

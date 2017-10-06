@@ -1,10 +1,8 @@
 @extends('_layout.frontend')
 
-@section('title')
+@php($service_mode = true)
 
-    404 (Not Found)
-
-@endsection
+@section('title')404 (Not Found) @endsection
 
 @section('site-content')
 

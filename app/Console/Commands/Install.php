@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>
+ * Copyright (c) 2017 Andrey Khrolenok <andrey@khrolenok.ru>.
  */
 
 namespace Penati\Console\Commands;
@@ -8,11 +8,9 @@ namespace Penati\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Penati\Role;
 
 class Install extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -71,7 +69,7 @@ class Install extends Command
     }
 
     /**
-     * Validates the user input
+     * Validates the user input.
      *
      * @param string $attribute
      * @param string $validation
@@ -82,9 +80,9 @@ class Install extends Command
     protected function validateInput(string $attribute, string $validation, $value)
     {
         $validator = Validator::make([
-            $attribute => $value
+            $attribute => $value,
         ], [
-            $attribute => $validation
+            $attribute => $validation,
         ]);
 
         if ($validator->fails()) {

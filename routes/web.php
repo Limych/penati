@@ -45,7 +45,7 @@ Route::get('/home', 'HomeController@index')->name('dashboard');
 // Agents
 if (env('APP_DEBUG')) { // TODO: Убрать, когда будут сделаны страницы агентов
     Route::resource('agents', 'AgentController', ['only' => [
-        'show'
+        'show',
     ]]);
 }
 
@@ -53,9 +53,10 @@ if (env('APP_DEBUG')) { // TODO: Убрать, когда будут сдела�
 Route::get('offers/{id}', function ($id) {
     // Redirect external short link to right URL
     $offer = \Penati\Offer::whereForeignId($id)->firstOrFail();
-    return redirect('agents/' . $offer->agent()->firstOrFail([ 'slug' ])->slug .
-        '/offers/' . $offer->slug);
+
+    return redirect('agents/'.$offer->agent()->firstOrFail(['slug'])->slug.
+        '/offers/'.$offer->slug);
 });
 Route::resource('agents/{agent}/offers', 'OfferController', ['only' => [
-    'show'
+    'show',
 ]]);

@@ -1,4 +1,5 @@
-@hasSection('auth-mode')
+@php($service_mode = !empty($service_mode) || !empty($auth_mode))
+@if(!empty($auth_mode))
     @php(Meta::setMetaRobots('none'))
     @section('meta-robots')none @endsection
     @push('styles')
@@ -28,6 +29,8 @@
     <meta name="robots" content="@yield('meta-robots')"/>
 @endif
 
+    <link rel="canonical" href="{{ URL::current() }}" />
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -55,18 +58,15 @@
     <header class="app-header navbar">
         @include(AdminTemplate::getViewPath('_partials.header'))
     </header>
-@else
-    @hasSection('auth-mode')
-    @else
-        <nav id="navbar-login" class="navbar navbar-light">
-            <a class="btn btn-sm btn-light" href="{{ route('login') }}" role="button"
-               data-toggle="modal" data-target="#dlgLogin" title="Sign In">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
-            </a>
-        </nav>
-        @include('auth.modal-login')
-    @endif
-@endauth
+@elseif(empty($service_mode))
+    <nav id="navbar-login" class="navbar navbar-light">
+        <a class="btn btn-sm btn-light" href="{{ route('login') }}" role="button"
+           data-toggle="modal" data-target="#dlgLogin" title="Sign In">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </a>
+    </nav>
+    @include('auth.modal-login')
+@endif
 
 @yield('content')
 
@@ -84,7 +84,7 @@
         $('#dlgLogin').on('shown.bs.modal', function () {
             $('#dlgLoginEmail').focus();
         });
-        @if($errors->count())
+        @if(!empty($errors) && $errors->count())
         $('#dlgLogin').modal('show');
         @endif
     });

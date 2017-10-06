@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [ ! -f ./composer.phar ]; then
-    composer-install
-fi
-php composer install
-php artisan storage:link
-php artisan install

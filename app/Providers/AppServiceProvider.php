@@ -2,14 +2,13 @@
 
 namespace Penati\Providers;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Penati\Offer;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Penati\Offer;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider
 {
-
     /**
      * Register any application services.
      *
@@ -31,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        /**
+        /*
          * Map application models to simple types
          */
         Relation::morphMap([
