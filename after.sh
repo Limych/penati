@@ -6,3 +6,8 @@
 
 git config --global core.excludesfile ~/.gitignore
 echo .idea/ >~/.gitignore
+
+git config --global core.eol lf
+git config --global core.autocrlf input
+git config core.eol lf
+git config core.autocrlf input
