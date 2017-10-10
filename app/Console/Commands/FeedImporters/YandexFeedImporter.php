@@ -12,14 +12,14 @@
 
 namespace Penati\Console\Commands\FeedImporters;
 
-use Penati\User;
-use Penati\Offer;
 use Carbon\Carbon;
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
-use Penati\ContentBlocks\PhotosContentBlock;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Str;
 use Penati\ContentBlocks\DescriptionContentBlock;
+use Penati\ContentBlocks\PhotosContentBlock;
+use Penati\Offer;
+use Penati\User;
+use Ramsey\Uuid\Uuid;
 
 class YandexFeedImporter
 {
@@ -103,9 +103,15 @@ class YandexFeedImporter
                 // No-op: skip any insignificant whitespace, comments, etc.
             } elseif ($xml->namespaceURI == self::YANDEX_NS) {
                 switch ($key = $xml->localName) {
+                    default:
+                        $xml->next();
+                        continue 2;
                     case 'type':
+                    case 'type-id':
                     case 'property-type':
+                    case 'property-type-id':
                     case 'category':
+                    case 'category-id':
                     case 'description':
                     case 'rooms':
                         $child = '';
@@ -154,9 +160,6 @@ class YandexFeedImporter
                     case 'sales-agent':
                         $data[$key] = $this->readAgent($xml);
                         break;
-                    default:
-                        $xml->next();
-                        continue;
                 }
             }
             $xml->read(); // Advance the reader

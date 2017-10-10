@@ -9,7 +9,7 @@ set -e
 
 phpunit
 
-rm -Rf resources/assets tests .editorconfig .phpstorm.meta.php .styleci.yml _ide* after.sh deploy* install*
+rm -Rf resources/assets tests .editorconfig .phpstorm.meta.php .styleci.yml _ide* after.sh install*
 rm -Rf phpunit.xml prod_* server.php Vagrantfile webpack.mix.js
 
 git commit -a -m "Clean develop assets"
@@ -18,6 +18,8 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 version=$(echo "$branch" | sed 's#.*/##g')
 
 git checkout master
-git merge --no-ff ${branch}
-git tag -a ${version}
+git merge --no-ff ${branch} -m "Publish release $version"
+git tag -a ${version} -m "Release $version"
 git branch -d ${branch}
+git push master --tags
+./deploy

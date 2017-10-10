@@ -12,12 +12,12 @@
 
 namespace Penati\Console\Commands\FeedImporters;
 
-use Penati\User;
-use Penati\Offer;
-use Ramsey\Uuid\Uuid;
-use Penati\ContentBlocks\PhotosContentBlock;
 use Illuminate\Contracts\Foundation\Application;
 use Penati\ContentBlocks\DescriptionContentBlock;
+use Penati\ContentBlocks\PhotosContentBlock;
+use Penati\Offer;
+use Penati\User;
+use Ramsey\Uuid\Uuid;
 
 class Cian2FeedImporter
 {
@@ -111,8 +111,7 @@ class Cian2FeedImporter
                 switch ($key = $xml->localName) {
                     default:
                         $xml->next();
-//                        dd($xml->localName);
-                        continue;
+                        continue 2;
                     case 'ExternalId':
                         $child = '';
                         while ($xml->read() && $xml->hasValue) {

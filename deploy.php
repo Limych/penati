@@ -27,6 +27,7 @@ add('writable_dirs', []);
 // Default stage
 set('default_stage', 'production');
 
+// Last releases keeping
 set('keep_releases', 7);
 
 // Hosts
