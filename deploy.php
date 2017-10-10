@@ -9,7 +9,7 @@ set('application', 'penati.ru');
 
 // Project repository
 set('repository', 'https://github.com/Limych/penati.git');
-set('branch', 'stable');
+set('branch', 'master');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
@@ -26,6 +26,9 @@ add('writable_dirs', []);
 
 // Default stage
 set('default_stage', 'production');
+
+// Last releases keeping
+set('keep_releases', 7);
 
 // Hosts
 
