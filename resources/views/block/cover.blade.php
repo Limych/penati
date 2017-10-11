@@ -1,4 +1,4 @@
-<div class="row block position-relative">
+<div class="row block position-relative bg-white">
     <div class="mask-bg parallax" style="background-image: url({{ $background }}); height: 75vh"></div>
     <div class="position-absolute" style="top: 0; left: 0; bottom: 0; right: 0">
         <h1 class="col text-center position-absolute" style="top: 50%; transform: translateY(-50%)">{{ $title }}</h1>

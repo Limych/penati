@@ -36,12 +36,13 @@
             $this.each(function () {
                 var $element = $(this);
                 var top = $element.offset().top;
+                var ptop = $element.parent().offset().top;
                 var height = getHeight($element);
-                var rect = this.getBoundingClientRect();
-                if (top + height < pos || top > pos + windowHeight) {
+                if (ptop + top + height < pos || ptop + top > pos + windowHeight) {
                     return;
                 }
-                var backgroundVerticalShift = -1 * Math.round(rect.top * speedFactor);
+                var rect = this.getBoundingClientRect();
+                var backgroundVerticalShift = Math.round((ptop - rect.top) * speedFactor);
                 if (isWebkitTransform) {
                     this.style['-webkit-transform'] = "translateY(" + backgroundVerticalShift + "px)";
                 } else {
