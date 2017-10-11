@@ -48,7 +48,7 @@ class Offers extends Section implements Initializable
     {
         return AdminDisplay::table()
             ->with(['agent'])
-            ->setHtmlAttribute('class', 'table-primary')
+            ->setHtmlAttribute('class', 'bg-default')
             ->setColumns([
                 AdminColumn::link('title', trans('http.display.title')),
                 AdminColumn::text('agent.name', trans('http.display.agent')),

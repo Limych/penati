@@ -113,3 +113,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
 }
+
+.bg-default {
+    background-color: transparentize($body-bg, 0.1);
+}

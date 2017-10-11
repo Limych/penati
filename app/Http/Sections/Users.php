@@ -55,7 +55,7 @@ class Users extends Section implements Initializable
     public function onDisplay()
     {
         return AdminDisplay::table()
-            ->setHtmlAttribute('class', 'table-primary')
+            ->setHtmlAttribute('class', 'bg-default')
             ->setColumns([
                 AdminColumn::link('name', trans('http.display.username')),
                 AdminColumn::email('email', trans('http.display.email'))->setView('column.account_email')->setWidth('150px'),

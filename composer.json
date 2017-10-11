@@ -23,7 +23,7 @@
         "laravel/framework": "~5.5",
         "laravel/homestead": "~6.1",
         "laravel/tinker": "~1.0",
-        "laravelrus/sleepingowl": "4.*@dev",
+        "laravelrus/sleepingowl": "dev-development",
         "limych/sleepingowl-coreui": "dev-develop",
         "roumen/sitemap": "^2.7",
         "silber/bouncer": "v1.0.0-beta.4"
