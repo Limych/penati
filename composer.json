@@ -21,7 +21,6 @@
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "~5.5",
-        "laravel/homestead": "~6.1",
         "laravel/tinker": "~1.0",
         "laravelrus/sleepingowl": "dev-development",
         "limych/sleepingowl-coreui": "dev-develop",
@@ -33,6 +32,7 @@
         "deployer/deployer": "^6.0",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
+        "laravel/homestead": "~6.1",
         "mockery/mockery": "~0.9",
         "phpunit/phpunit": "~6.0"
     },

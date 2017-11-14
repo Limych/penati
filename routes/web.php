@@ -21,7 +21,7 @@ if (env('APP_DEBUG')) {
         Route::get('offer', 'DevController@offers');
 
         Route::get('test', function () {
-            return view('test');
+            return view('_dev.test');
         })->name('test');
     });
 }
@@ -36,6 +36,10 @@ if (env('APP_DEBUG')) { // TODO: Убрать, когда будут прове�
         })->name('about_cookies');
     });
 }
+
+Route::get('adv-packages', function () {
+    return view('adv-packages');
+});
 
 Route::get('/', function () {
     return view('index');
